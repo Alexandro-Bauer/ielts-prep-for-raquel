@@ -92,29 +92,44 @@
             transition: width 0.5s ease;
         }
         
-        .week-selector {
-            display: flex;
-            justify-content: space-between;
+        /* Tab Styles */
+        .tab {
+            overflow: hidden;
+            background-color: var(--light);
+            border-radius: 5px;
             margin-bottom: 20px;
         }
         
-        .week-btn {
-            padding: 10px 20px;
-            background-color: var(--light);
+        .tab button {
+            background-color: inherit;
+            float: left;
             border: none;
-            border-radius: 5px;
-            font-weight: bold;
+            outline: none;
             cursor: pointer;
-            transition: background-color 0.3s;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-weight: bold;
+            font-size: 16px;
+            width: 25%;
         }
         
-        .week-btn.active {
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        
+        .tab button.active {
             background-color: var(--secondary);
             color: white;
         }
         
-        .week-btn:hover:not(.active) {
-            background-color: #d1d8e0;
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+        }
+        
+        .tabcontent.active {
+            display: block;
         }
         
         .days-grid {
@@ -291,13 +306,10 @@
         }
         
         @media (max-width: 768px) {
-            .week-selector {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            
-            .week-btn {
-                flex: 1 0 calc(50% - 10px);
+            .tab button {
+                width: 50%;
+                font-size: 14px;
+                padding: 10px;
             }
             
             .resources-grid {
@@ -328,15 +340,370 @@
             <p><span id="completed-days">0</span> of 28 days completed (<span id="progress-percentage">0%</span>)</p>
         </div>
         
-        <div class="week-selector">
-            <button class="week-btn active" data-week="1" onclick="selectWeek(1)">Week 1</button>
-            <button class="week-btn" data-week="2" onclick="selectWeek(2)">Week 2</button>
-            <button class="week-btn" data-week="3" onclick="selectWeek(3)">Week 3</button>
-            <button class="week-btn" data-week="4" onclick="selectWeek(4)">Week 4</button>
+        <!-- Simplified Tab System -->
+        <div class="tab">
+            <button class="tablinks active" onclick="openWeek(event, 'Week1')">Week 1</button>
+            <button class="tablinks" onclick="openWeek(event, 'Week2')">Week 2</button>
+            <button class="tablinks" onclick="openWeek(event, 'Week3')">Week 3</button>
+            <button class="tablinks" onclick="openWeek(event, 'Week4')">Week 4</button>
         </div>
         
-        <div class="days-grid" id="days-container">
-            <!-- Days will be dynamically loaded here -->
+        <!-- Week 1 Content -->
+        <div id="Week1" class="tabcontent active">
+            <div class="days-grid">
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 1</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Available</div>
+                        <p>Introduction to IELTS & Listening Basics</p>
+                        <a href="day-1.html" class="day-btn">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 2</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Speaking Introduction & Writing Task 1</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 3</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Listening Section Types & Reading Strategies</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 4</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Writing Task 2 Introduction & Speaking Part 2</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 5</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Grammar Focus & Vocabulary Building</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 6</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Weekend Review & Practice Test</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 7</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Week 1 Assessment & Planning</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Week 2 Content -->
+        <div id="Week2" class="tabcontent">
+            <div class="days-grid">
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 8</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Listening for Specific Information & Reading Techniques</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 9</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Writing Task 2 Development & Speaking Part 3</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 10</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Advanced Listening & Reading Practice</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 11</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Writing Skills Development & Speaking Fluency</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 12</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Vocabulary Expansion & Grammar Review</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 13</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Weekend Practice Test & Analysis</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 14</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Week 2 Assessment & Planning</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Week 3 Content -->
+        <div id="Week3" class="tabcontent">
+            <div class="days-grid">
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 15</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Listening Sections 3 & 4 & Reading Time Management</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 16</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Writing Under Time Pressure & Speaking Practice</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <!-- Add more Day cards for Week 3 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 17</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Listening & Reading Practice Tests</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 18</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Writing Tasks 1 & 2 Full Practice</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 19</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Speaking Test Simulation & Feedback</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 20</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Full Practice Test & Analysis</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 21</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Week 3 Assessment & Final Week Planning</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Week 4 Content -->
+        <div id="Week4" class="tabcontent">
+            <div class="days-grid">
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 22</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Listening & Reading Final Practice</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 23</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Writing Tasks Refinement</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <!-- Add more Day cards for Week 4 -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 24</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Speaking Final Preparation</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 25</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Full Mock Test</p>
+                        <a href="mock-test.html" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 26</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Error Analysis & Targeted Practice</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 27</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Final Review & Strategies</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">
+                        <h3>Day 28</h3>
+                    </div>
+                    <div class="day-content">
+                        <div class="day-status">Not Completed</div>
+                        <div class="unlock-status">Locked</div>
+                        <p>Test Day Preparation</p>
+                        <a href="#" class="day-btn locked">Start</a>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="resources-section">
@@ -415,293 +782,38 @@
         <div class="container">
             <p>Created with ❤️ for Raquel Mendes | IELTS Test Date: May 21, 2025</p>
         </div>
+
+        <footer>
+        <div class="container">
+            <p>Created with ❤️ for Raquel Mendes | IELTS Test Date: May 21, 2025</p>
+        </div>
     </footer>
     
     <script>
-        // Sample data structure for daily content
-        const weeklyData = {
-            1: [
-                {
-                    day: 1,
-                    title: "Introduction to IELTS & Listening Basics",
-                    completed: false,
-                    unlocked: true,
-                    href: "day-1.html"
-                },
-                {
-                    day: 2,
-                    title: "Speaking Introduction & Writing Task 1",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-2.html"
-                },
-                {
-                    day: 3,
-                    title: "Listening Section Types & Reading Strategies",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-3.html"
-                },
-                {
-                    day: 4,
-                    title: "Writing Task 2 Introduction & Speaking Part 2",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-4.html"
-                },
-                {
-                    day: 5,
-                    title: "Grammar Focus & Vocabulary Building",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-5.html"
-                },
-                {
-                    day: 6,
-                    title: "Weekend Review & Practice Test",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-6.html"
-                },
-                {
-                    day: 7,
-                    title: "Week 1 Assessment & Planning",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-7.html"
-                }
-            ],
-            2: [
-                {
-                    day: 8,
-                    title: "Listening for Specific Information & Reading Techniques",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-8.html"
-                },
-                {
-                    day: 9,
-                    title: "Writing Task 2 Development & Speaking Part 3",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-9.html"
-                },
-                {
-                    day: 10,
-                    title: "Advanced Listening & Reading Practice",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-10.html"
-                },
-                {
-                    day: 11,
-                    title: "Writing Skills Development & Speaking Fluency",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-11.html"
-                },
-                {
-                    day: 12,
-                    title: "Vocabulary Expansion & Grammar Review",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-12.html"
-                },
-                {
-                    day: 13,
-                    title: "Weekend Practice Test & Analysis",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-13.html"
-                },
-                {
-                    day: 14,
-                    title: "Week 2 Assessment & Planning",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-14.html"
-                }
-            ],
-            3: [
-                {
-                    day: 15,
-                    title: "Listening Sections 3 & 4 & Reading Time Management",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-15.html"
-                },
-                {
-                    day: 16,
-                    title: "Writing Under Time Pressure & Speaking Practice",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-16.html"
-                },
-                {
-                    day: 17,
-                    title: "Listening & Reading Practice Tests",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-17.html"
-                },
-                {
-                    day: 18,
-                    title: "Writing Tasks 1 & 2 Full Practice",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-18.html"
-                },
-                {
-                    day: 19,
-                    title: "Speaking Test Simulation & Feedback",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-19.html"
-                },
-                {
-                    day: 20,
-                    title: "Full Practice Test & Analysis",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-20.html"
-                },
-                {
-                    day: 21,
-                    title: "Week 3 Assessment & Final Week Planning",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-21.html"
-                }
-            ],
-            4: [
-                {
-                    day: 22,
-                    title: "Listening & Reading Final Practice",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-22.html"
-                },
-                {
-                    day: 23,
-                    title: "Writing Tasks Refinement",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-23.html"
-                },
-                {
-                    day: 24,
-                    title: "Speaking Final Preparation",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-24.html"
-                },
-                {
-                    day: 25,
-                    title: "Full Mock Test",
-                    completed: false,
-                    unlocked: false,
-                    href: "mock-test.html"
-                },
-                {
-                    day: 26,
-                    title: "Error Analysis & Targeted Practice",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-26.html"
-                },
-                {
-                    day: 27,
-                    title: "Final Review & Strategies",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-27.html"
-                },
-                {
-                    day: 28,
-                    title: "Test Day Preparation",
-                    completed: false,
-                    unlocked: false,
-                    href: "day-28.html"
-                }
-            ]
-        };
-        
-        // Function to select a week - direct onclick handler
-        function selectWeek(weekNumber) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.week-btn').forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            document.querySelector(`.week-btn[data-week="${weekNumber}"]`).classList.add('active');
-            
-            // Load days for the selected week
-            loadDays(weekNumber);
-        }
-        
-        // Function to load days for a specific week
-        function loadDays(weekNumber) {
-            const daysContainer = document.getElementById('days-container');
-            daysContainer.innerHTML = '';
-            
-            const week = weeklyData[weekNumber];
-            if (!week) return;
-            
-            week.forEach(day => {
-                // Check if this day is completed in localStorage
-                const isCompleted = localStorage.getItem(`day${day.day}Completed`) === 'true';
-                if (isCompleted) {
-                    day.completed = true;
-                    
-                    // If this day is completed, unlock the next day
-                    const nextDayIndex = week.findIndex(d => d.day === day.day) + 1;
-                    if (nextDayIndex < week.length) {
-                        week[nextDayIndex].unlocked = true;
-                    } else if (parseInt(weekNumber) + 1 <= 4) {
-                        // Unlock first day of next week
-                        const nextWeek = weeklyData[parseInt(weekNumber) + 1];
-                        if (nextWeek && nextWeek.length > 0) {
-                            nextWeek[0].unlocked = true;
-                        }
-                    }
-                }
-                
-                const dayElement = document.createElement('div');
-                dayElement.className = `day-card ${day.completed ? 'day-completed' : ''}`;
-                
-                dayElement.innerHTML = `
-                    <div class="day-header">
-                        <h3>Day ${day.day}</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status">${day.completed ? 'Completed' : 'Not Completed'}</div>
-                        <div class="unlock-status">${day.unlocked ? 'Available' : 'Locked'}</div>
-                        <p>${day.title}</p>
-                        <a href="${day.unlocked ? day.href : '#'}" class="day-btn ${!day.unlocked ? 'locked' : ''}">
-                            ${day.completed ? 'Review' : 'Start'}
-                        </a>
-                    </div>
-                `;
-                
-                daysContainer.appendChild(dayElement);
-            });
-        }
-        
-        // Function to update overall progress
-        function updateProgress() {
-            let completedDays = 0;
-            let totalDays = 0;
-            
-            for (const weekNumber in weeklyData) {
-                const week = weeklyData[weekNumber];
-                totalDays += week.length;
-                
-                week.forEach(day => {
-                    // Check localStorage for completion status
-                    if (localStorage.getItem(`day${day.day}Completed`) === 'true') {
-                        completedDays++;
-                    }
-                });
+        // Tab functionality
+        function openWeek(evt, weekName) {
+            // Hide all tabcontent elements
+            var tabcontent = document.getElementsByClassName("tabcontent");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
             }
+
+            // Remove "active" class from all tablinks
+            var tablinks = document.getElementsByClassName("tablinks");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(weekName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        
+        // Function to update progress
+        function updateProgress() {
+            // In a full implementation, this would check localStorage for completed days
+            const completedDays = 0;
+            const totalDays = 28;
             
             const progressPercentage = (completedDays / totalDays) * 100;
             document.getElementById('overall-progress').style.width = `${progressPercentage}%`;
@@ -722,134 +834,12 @@
             document.getElementById('countdown-timer').textContent = `${days} Days : ${hours} Hours : ${minutes} Minutes`;
         }
         
-        // Modal functionality
-        function setupModal() {
-            const modal = document.getElementById('completion-modal');
-            const closeBtn = document.getElementById('close-modal');
-            const continueBtn = document.getElementById('modal-continue');
-            
-            // Close modal when clicking the close button
-            closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-            
-            // Close modal when clicking continue
-            continueBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        }
-        
-        // Check for day completion from URL parameter
-        function checkForCompletion() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const completedDay = urlParams.get('completed');
-            
-            if (completedDay) {
-                const dayNumber = parseInt(completedDay);
-                
-                // Mark the day as completed in localStorage
-                localStorage.setItem(`day${dayNumber}Completed`, 'true');
-                
-                // Find the day in the data
-                for (const weekNumber in weeklyData) {
-                    const week = weeklyData[weekNumber];
-                    const dayIndex = week.findIndex(day => day.day === dayNumber);
-                    
-                    if (dayIndex !== -1) {
-                        // Mark the day as completed
-                        week[dayIndex].completed = true;
-                        
-                        // Unlock the next day if available
-                        if (dayIndex + 1 < week.length) {
-                            week[dayIndex + 1].unlocked = true;
-                        } else if (parseInt(weekNumber) + 1 <= 4) {
-                            // Unlock first day of next week
-                            const nextWeek = weeklyData[parseInt(weekNumber) + 1];
-                            if (nextWeek && nextWeek.length > 0) {
-                                nextWeek[0].unlocked = true;
-                            }
-                        }
-                        
-                        // Show completion modal
-                        showCompletionModal(dayNumber);
-                        
-                        break;
-                    }
-                }
-                
-                // Remove the parameter from URL to prevent showing the modal again on refresh
-                window.history.replaceState({}, document.title, window.location.pathname);
-                
-                // Update progress
-                updateProgress();
-                
-                // Reload current week view
-                const activeWeekBtn = document.querySelector('.week-btn.active');
-                if (activeWeekBtn) {
-                    const activeWeek = parseInt(activeWeekBtn.getAttribute('data-week'));
-                    loadDays(activeWeek);
-                }
-            }
-        }
-        
-        // Function to show completion modal
-        function showCompletionModal(dayNumber) {
-            const modal = document.getElementById('completion-modal');
-            
-            // Update modal content
-            document.getElementById('modal-title').textContent = `Day ${dayNumber} Completed!`;
-            document.getElementById('modal-message').textContent = `Congratulations on completing Day ${dayNumber} of your IELTS preparation!`;
-            
-            // Show random score between 4 and 5.5
-            const randomScore = (4 + Math.random() * 1.5).toFixed(1);
-            document.getElementById('day-score').textContent = randomScore;
-            
-            // Generate feedback based on the day
-            let feedback;
-            if (dayNumber <= 7) {
-                feedback = "You're making good progress on the fundamentals! Continue focusing on building your basic listening and reading skills. Try to expand your vocabulary and practice speaking daily.";
-            } else if (dayNumber <= 14) {
-                feedback = "Great work on week 2! Your skills are developing well. Focus on improving your writing structure and practicing more complex listening tasks. Keep building your vocabulary.";
-            } else if (dayNumber <= 21) {
-                feedback = "Excellent progress in week 3! Your test strategies are improving. Continue working on time management in the reading and writing sections. Practice speaking with more complex vocabulary.";
-            } else {
-                feedback = "You're in the final stretch! Your test-taking skills have improved significantly. Focus on fine-tuning your strategies and maintaining confidence. Review your notes from previous weeks.";
-            }
-            
-            document.getElementById('day-feedback').textContent = feedback;
-            
-            // Show modal
-            modal.style.display = 'block';
-        }
-        
-        // Initialize the app
-        function init() {
-            // Load Week 1 by default
-            loadDays(1);
-            
-            // Update progress
+        // Update progress and countdown when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
             updateProgress();
-            
-            // Update countdown
             updateCountdown();
             setInterval(updateCountdown, 60000); // Update every minute
-            
-            // Setup modal
-            setupModal();
-            
-            // Check for day completion
-            checkForCompletion();
-        }
-        
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', init);
+        });
     </script>
 </body>
 </html>
