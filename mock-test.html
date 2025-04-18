@@ -88,9 +88,21 @@
             margin-bottom: 30px;
         }
         
-        .audio-player {
-            width: 100%;
+        .audio-link {
+            display: block;
             margin: 20px 0;
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .audio-link:hover {
+            background-color: #d1d8e0;
         }
         
         .question {
@@ -198,6 +210,46 @@
             margin-top: 20px;
         }
         
+        .collapse-btn {
+            background-color: var(--light);
+            border: none;
+            color: var(--primary);
+            padding: 10px 15px;
+            text-align: left;
+            width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .collapse-btn::after {
+            content: "+";
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .collapse-btn.active::after {
+            content: "-";
+        }
+        
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
         footer {
             background-color: var(--primary);
             color: white;
@@ -257,12 +309,10 @@
             <h2>Section 1: Conversation between a customer and service representative</h2>
             <p>Questions 1-10</p>
             
-            <div class="audio-player">
+            <div>
                 <p>Listen to the audio and answer questions 1-10:</p>
-                <audio controls id="section1-audio">
-                    <source src="/api/placeholder/400/320" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
+                <a href="https://www.youtube.com/watch?v=sMmVIlB6DvI" target="_blank" class="audio-link">Access IELTS Listening Section 1 Audio (YouTube)</a>
+                <p>Alternative: <a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening/section-1" target="_blank">British Council Listening Practice</a></p>
             </div>
             
             <p>Complete the form below. Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.</p>
@@ -309,6 +359,24 @@
                 <div class="question">
                     <p>10. Reservation number: <input type="text" class="text-input"></p>
                 </div>
+                
+                <button class="collapse-btn" onclick="toggleCollapse(this)">Check Your Answers</button>
+                <div class="collapse-content">
+                    <p>Sample answers (actual answers will depend on the specific recording):</p>
+                    <ol>
+                        <li>Customer Name: <strong>Robert Smith</strong></li>
+                        <li>Nationality: <strong>British</strong></li>
+                        <li>Length of stay: <strong>3</strong> weeks</li>
+                        <li>Name of accommodation: <strong>Harbour View</strong></li>
+                        <li>Daily room rate: $<strong>85</strong></li>
+                        <li>Checkout time: <strong>10 am</strong></li>
+                        <li>Transportation from airport: <strong>airport shuttle</strong></li>
+                        <li>Tourist attraction: <strong>Opera House</strong></li>
+                        <li>Tour package price: $<strong>175</strong></li>
+                        <li>Reservation number: <strong>BH-7291</strong></li>
+                    </ol>
+                    <p><em>Note: These are sample answers. Check against the specific recording you listened to.</em></p>
+                </div>
             </div>
         </div>
         
@@ -316,12 +384,10 @@
             <h2>Section 2: Monologue about a community project</h2>
             <p>Questions 11-20</p>
             
-            <div class="audio-player">
+            <div>
                 <p>Listen to the audio and answer questions 11-20:</p>
-                <audio controls id="section2-audio">
-                    <source src="/api/placeholder/400/320" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
+                <a href="https://www.youtube.com/watch?v=VAtYLPC_Yqs" target="_blank" class="audio-link">Access IELTS Listening Section 2 Audio (YouTube)</a>
+                <p>Alternative: <a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening/section-2" target="_blank">British Council Listening Practice - Section 2</a></p>
             </div>
             
             <p>Choose the correct letter, A, B, or C.</p>
@@ -370,6 +436,19 @@
                     <label><input type="radio" name="q15" value="C"> C. Multiple sources</label>
                 </div>
             </div>
+            
+            <button class="collapse-btn" onclick="toggleCollapse(this)">Check Your Answers</button>
+            <div class="collapse-content">
+                <p>Sample answers (actual answers will depend on the specific recording):</p>
+                <ol start="11">
+                    <li>Most likely: <strong>B. 5 years ago</strong></li>
+                    <li>Most likely: <strong>B. Anyone who is interested</strong></li>
+                    <li>Most likely: <strong>A. Provide food for low-income families</strong></li>
+                    <li>Most likely: <strong>C. At least once a month</strong></li>
+                    <li>Most likely: <strong>C. Multiple sources</strong></li>
+                </ol>
+                <p><em>Note: These are sample answers. Check against the specific recording you listened to.</em></p>
+            </div>
         </div>
         
         <button class="submit-btn" id="submit-test">Submit Test</button>
@@ -377,12 +456,12 @@
     
     <div id="results-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" id="close-modal">&times;</span>
             <h2>Your Test Results</h2>
             
             <div class="result-box">
                 <p>You scored:</p>
-                <div class="result-score"><span id="correct-answers">0</span>/25</div>
+                <div class="result-score"><span id="correct-answers">0</span>/15</div>
                 <p>Estimated Band Score:</p>
                 <div class="band-score"><span id="band-score">5.0</span></div>
             </div>
@@ -398,7 +477,7 @@
                 </ul>
             </div>
             
-            <a href="index.html" class="submit-btn" style="text-decoration: none; text-align: center;">Return to Dashboard</a>
+            <a href="index.html?completed=25" class="submit-btn" style="text-decoration: none; text-align: center;">Return to Dashboard</a>
         </div>
     </div>
     
@@ -434,20 +513,25 @@
             }, 1000);
         }
         
-        // Start timer when audio begins playing
-        document.getElementById('section1-audio').addEventListener('play', function() {
-            if (!timerInterval) {
-                startTimer();
+        // Toggle collapse functionality
+        function toggleCollapse(button) {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+            } else {
+                content.classList.add('active');
             }
-        });
+        }
         
         // Submit test functionality
         function submitTest() {
             // In a real implementation, this would check answers against correct ones
             // For this demo, we'll simulate a score
             
-            const totalQuestions = 25;
-            const correctAnswers = Math.floor(Math.random() * 6) + 15; // Random between 15-20 correct
+            const totalQuestions = 15;
+            const correctAnswers = Math.floor(Math.random() * 6) + 8; // Random between 8-13 correct
             const scorePercentage = (correctAnswers / totalQuestions) * 100;
             
             // Calculate approximate band score (simplified)
@@ -520,19 +604,26 @@
             document.getElementById('results-modal').style.display = 'block';
         }
         
-        document.getElementById('submit-test').addEventListener('click', submitTest);
-        
-        // Close modal when clicking the close button
-        document.querySelector('.close-btn').addEventListener('click', function() {
-            document.getElementById('results-modal').style.display = 'none';
-        });
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            const modal = document.getElementById('results-modal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start timer automatically
+            startTimer();
+            
+            // Submit test button
+            document.getElementById('submit-test').addEventListener('click', submitTest);
+            
+            // Modal close button
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('results-modal').style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                const modal = document.getElementById('results-modal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
