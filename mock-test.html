@@ -1,75 +1,537 @@
-<h2>Section 2: Monologue about a community project</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Mock Test - Listening Section</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 30px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #1a252f;
+        }
+        
+        .test-section {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timer-box {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .instructions {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .resource-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .resource-box h4 {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        
+        .resource-box ul li {
+            margin-bottom: 8px;
+        }
+        
+        .resource-box a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .resource-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .offline-test {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .offline-test-intro {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .text-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 5px;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .result-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .result-score {
+            font-size: 3rem;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .band-score {
+            font-size: 4rem;
+            color: var(--accent);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .feedback-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .collapse-btn {
+            background-color: var(--light);
+            border: none;
+            color: var(--primary);
+            padding: 10px 15px;
+            text-align: left;
+            width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .collapse-btn::after {
+            content: "+";
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .collapse-btn.active::after {
+            content: "-";
+        }
+        
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 0 0 5px 5px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .test-section {
+                padding: 15px;
+            }
+            
+            .timer-box {
+                padding: 10px;
+            }
+            
+            .timer-display {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>IELTS Mock Test</h1>
+            <p>Listening Section (40 minutes)</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="timer-box">
+            <h3>Time Remaining</h3>
+            <div class="timer-display" id="timer">40:00</div>
+        </div>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <ul>
+                <li>The listening test consists of 4 sections with 10 questions each</li>
+                <li>You will listen to each recording ONCE only</li>
+                <li>After the listening section is complete, you will have 10 minutes to transfer your answers to the answer sheet</li>
+                <li>For this practice test, write your answers directly in the form provided</li>
+                <li>Spell all words correctly and pay attention to word limits where specified</li>
+            </ul>
+        </div>
+        
+        <div class="resource-box">
+            <h4>IELTS Listening Practice Resources</h4>
+            <p>This mock test can be completed in two ways:</p>
+            <ol>
+                <li>Online: Visit one of the official IELTS practice test sites, listen to their test, and answer the questions below</li>
+                <li>Offline: Use the provided practice test below which doesn't require audio</li>
+            </ol>
+            
+            <h4>Recommended Official Listening Resources:</h4>
+            <ul>
+                <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening" target="_blank">British Council - Free Listening Practice Tests</a></li>
+                <li><a href="https://www.ielts.org/for-test-takers/sample-test-questions" target="_blank">IELTS.org - Sample Listening Questions</a></li>
+                <li><a href="https://ieltsonlinetests.com/ielts-listening-practice-test" target="_blank">IELTS Online Tests - Listening Practice</a></li>
+                <li><a href="https://www.ieltsessentials.com/global/prepare/freepracticetests/listeningpracticetests" target="_blank">IELTS Essentials - Listening Practice Tests</a></li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <h2>Section 1: Conversation between a customer and service representative</h2>
+            <p>Questions 1-10</p>
+            
+            <div class="offline-test">
+                <p class="offline-test-intro">The following questions are based on a typical IELTS Section 1 conversation. If you're unable to access the online audio resources, you can practice with these questions by imagining a conversation about making a hotel reservation.</p>
+                
+                <p>Complete the form below. Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.</p>
+                
+                <div class="question-form">
+                    <h3>Hotel Reservation Form</h3>
+                    
+                    <div class="question">
+                        <p>1. Guest Name: <input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>2. Nationality: <input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>3. Length of stay: <input type="text" class="text-input"> nights</p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>4. Room type requested: <input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>5. Daily room rate: $<input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>6. Check-in date: <input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>7. Special request: <input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>8. Breakfast included: <input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>9. Payment method: <input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <div class="question">
+                        <p>10. Confirmation number: <input type="text" class="text-input"></p>
+                    </div>
+                    
+                    <button class="collapse-btn" onclick="toggleCollapse(this)">Sample Answer</button>
+                    <div class="collapse-content">
+                        <p>These are sample answers that would be typical for this kind of form:</p>
+                        <ol>
+                            <li>Guest Name: <strong>Robert Smith</strong></li>
+                            <li>Nationality: <strong>Australian</strong></li>
+                            <li>Length of stay: <strong>5</strong> nights</li>
+                            <li>Room type requested: <strong>Double room</strong></li>
+                            <li>Daily room rate: $<strong>120</strong></li>
+                            <li>Check-in date: <strong>June 15th</strong></li>
+                            <li>Special request: <strong>Quiet room</strong></li>
+                            <li>Breakfast included: <strong>Yes</strong></li>
+                            <li>Payment method: <strong>Credit card</strong></li>
+                            <li>Confirmation number: <strong>BH-7291</strong></li>
+                        </ol>
+                        <p><em>Note: In a real IELTS test, your answers would need to match the specific information given in the audio recording.</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Section 2: Monologue about a community project</h2>
             <p>Questions 11-20</p>
             
-            <div>
-                <p>Listen to the audio and answer questions 11-20:</p>
-                <a href="https://www.youtube.com/watch?v=nvVi_8G8amU" target="_blank" class="audio-link">Access IELTS Listening Practice Test - Section 2 (YouTube)</a>
+            <div class="offline-test">
+                <p class="offline-test-intro">The following questions are based on a typical IELTS Section 2 monologue about a community garden project. If you're unable to access the online audio resources, you can practice with these questions.</p>
                 
-                <p>Alternative sources:</p>
-                <ul>
-                    <li><a href="https://www.ieltspractice.com/ielts-listening-practice-test/section-2/" target="_blank">IELTS Practice - Listening Section 2</a></li>
-                    <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening/section-2" target="_blank">British Council - Section 2 Practice</a></li>
-                </ul>
-            </div>
-            
-            <p>Choose the correct letter, A, B, or C.</p>
-            
-            <div class="question">
-                <p>11. The community garden project started:</p>
-                <div class="options">
-                    <label><input type="radio" name="q11" value="A"> A. 2 years ago</label>
-                    <label><input type="radio" name="q11" value="B"> B. 5 years ago</label>
-                    <label><input type="radio" name="q11" value="C"> C. 10 years ago</label>
+                <p>Choose the correct letter, A, B, or C.</p>
+                
+                <div class="question">
+                    <p>11. The community garden project started:</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="A"> A. 2 years ago</label>
+                        <label><input type="radio" name="q11" value="B"> B. 5 years ago</label>
+                        <label><input type="radio" name="q11" value="C"> C. 10 years ago</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p>12. Who can participate in the community garden project?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="A"> A. Only local residents</label>
+                        <label><input type="radio" name="q12" value="B"> B. Anyone who is interested</label>
+                        <label><input type="radio" name="q12" value="C"> C. People with gardening experience</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p>13. The main goal of the project is to:</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="A"> A. Provide food for low-income families</label>
+                        <label><input type="radio" name="q13" value="B"> B. Create a beautiful public space</label>
+                        <label><input type="radio" name="q13" value="C"> C. Teach gardening skills to children</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p>14. Volunteers are expected to work:</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="A"> A. Every day</label>
+                        <label><input type="radio" name="q14" value="B"> B. At least once a week</label>
+                        <label><input type="radio" name="q14" value="C"> C. At least once a month</label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p>15. The funding for the project comes from:</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="A"> A. Government grants</label>
+                        <label><input type="radio" name="q15" value="B"> B. Local businesses</label>
+                        <label><input type="radio" name="q15" value="C"> C. Multiple sources</label>
+                    </div>
+                </div>
+                
+                <button class="collapse-btn" onclick="toggleCollapse(this)">Sample Answer</button>
+                <div class="collapse-content">
+                    <p>Sample answers for this section:</p>
+                    <ol start="11">
+                        <li>Most likely: <strong>B. 5 years ago</strong></li>
+                        <li>Most likely: <strong>B. Anyone who is interested</strong></li>
+                        <li>Most likely: <strong>A. Provide food for low-income families</strong></li>
+                        <li>Most likely: <strong>C. At least once a month</strong></li>
+                        <li>Most likely: <strong>C. Multiple sources</strong></li>
+                    </ol>
+                    <p><em>Note: In a real IELTS test, your answers would need to match the specific information given in the audio recording.</em></p>
                 </div>
             </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Section 3: Conversation between students about an academic project</h2>
+            <p>Questions 21-30</p>
             
-            <div class="question">
-                <p>12. Who can participate in the community garden project?</p>
-                <div class="options">
-                    <label><input type="radio" name="q12" value="A"> A. Only local residents</label>
-                    <label><input type="radio" name="q12" value="B"> B. Anyone who is interested</label>
-                    <label><input type="radio" name="q12" value="C"> C. People with gardening experience</label>
+            <div class="offline-test">
+                <p class="offline-test-intro">The following questions are based on a typical IELTS Section 3 conversation between two students discussing a research project.</p>
+                
+                <p>Complete the sentences below. Write NO MORE THAN TWO WORDS for each answer.</p>
+                
+                <div class="question">
+                    <p>21. The students need to submit their project by <input type="text" class="text-input">.</p>
                 </div>
-            </div>
-            
-            <div class="question">
-                <p>13. The main goal of the project is to:</p>
-                <div class="options">
-                    <label><input type="radio" name="q13" value="A"> A. Provide food for low-income families</label>
-                    <label><input type="radio" name="q13" value="B"> B. Create a beautiful public space</label>
-                    <label><input type="radio" name="q13" value="C"> C. Teach gardening skills to children</label>
+                
+                <div class="question">
+                    <p>22. They decided to focus their research on <input type="text" class="text-input">.</p>
                 </div>
-            </div>
-            
-            <div class="question">
-                <p>14. Volunteers are expected to work:</p>
-                <div class="options">
-                    <label><input type="radio" name="q14" value="A"> A. Every day</label>
-                    <label><input type="radio" name="q14" value="B"> B. At least once a week</label>
-                    <label><input type="radio" name="q14" value="C"> C. At least once a month</label>
+                
+                <div class="question">
+                    <p>23. The professor suggested they include more <input type="text" class="text-input"> in their literature review.</p>
                 </div>
-            </div>
-            
-            <div class="question">
-                <p>15. The funding for the project comes from:</p>
-                <div class="options">
-                    <label><input type="radio" name="q15" value="A"> A. Government grants</label>
-                    <label><input type="radio" name="q15" value="B"> B. Local businesses</label>
-                    <label><input type="radio" name="q15" value="C"> C. Multiple sources</label>
+                
+                <div class="question">
+                    <p>24. They plan to conduct their survey in the <input type="text" class="text-input">.</p>
                 </div>
-            </div>
-            
-            <button class="collapse-btn" onclick="toggleCollapse(this)">Check Your Answers</button>
-            <div class="collapse-content">
-                <p>Sample answers (actual answers will depend on the specific recording):</p>
-                <ol start="11">
-                    <li>Most likely: <strong>B. 5 years ago</strong></li>
-                    <li>Most likely: <strong>B. Anyone who is interested</strong></li>
-                    <li>Most likely: <strong>A. Provide food for low-income families</strong></li>
-                    <li>Most likely: <strong>C. At least once a month</strong></li>
-                    <li>Most likely: <strong>C. Multiple sources</strong></li>
-                </ol>
-                <p><em>Note: These are sample answers. Check against the specific recording you listened to.</em></p>
+                
+                <div class="question">
+                    <p>25. They need to interview at least <input type="text" class="text-input"> people for their research.</p>
+                </div>
+                
+                <button class="collapse-btn" onclick="toggleCollapse(this)">Sample Answer</button>
+                <div class="collapse-content">
+                    <p>Sample answers for this section:</p>
+                    <ol start="21">
+                        <li><strong>next Friday</strong></li>
+                        <li><strong>social media</strong></li>
+                        <li><strong>recent studies</strong></li>
+                        <li><strong>city center</strong></li>
+                        <li><strong>thirty</strong></li>
+                    </ol>
+                    <p><em>Note: In a real IELTS test, your answers would need to match the specific information given in the audio recording.</em></p>
+                </div>
             </div>
         </div>
         
@@ -83,7 +545,7 @@
             
             <div class="result-box">
                 <p>You scored:</p>
-                <div class="result-score"><span id="correct-answers">0</span>/15</div>
+                <div class="result-score"><span id="correct-answers">0</span>/25</div>
                 <p id="attempt-text"></p>
                 <p>Estimated Band Score:</p>
                 <div class="band-score"><span id="band-score">5.0</span></div>
@@ -150,25 +612,18 @@
         
         // Submit test functionality
         function submitTest() {
-            // Count selected answers and text inputs with content
-            const formInputs = document.querySelectorAll('.text-input');
-            const multipleChoiceAnswers = document.querySelectorAll('input[type="radio"]:checked');
+            // Count completed questions
+            const filledInputs = Array.from(document.querySelectorAll('.text-input')).filter(input => input.value.trim() !== '').length;
+            const selectedRadios = document.querySelectorAll('input[type="radio"]:checked').length;
             
-            let attemptedInputs = 0;
-            formInputs.forEach(input => {
-                if (input.value.trim() !== '') {
-                    attemptedInputs++;
-                }
-            });
-            
-            const totalAttempted = attemptedInputs + multipleChoiceAnswers.length;
-            const totalQuestions = 15;
+            const totalAttempted = filledInputs + selectedRadios;
+            const totalQuestions = 25;
             
             // Calculate a score based on how many questions were attempted
             // In a real implementation, we'd check actual answers against correct ones
             const attemptPercentage = Math.min(totalAttempted / totalQuestions, 1);
-            const baseScore = Math.floor(8 + (7 * attemptPercentage));
-            const score = Math.min(baseScore, 15); // Cap at 15
+            const baseScore = Math.floor(8 + (17 * attemptPercentage));
+            const score = Math.min(baseScore, 25); // Cap at 25 (perfect score)
             
             const scorePercentage = (score / totalQuestions) * 100;
             
@@ -186,7 +641,16 @@
             // Update results modal
             document.getElementById('correct-answers').textContent = score;
             document.getElementById('band-score').textContent = bandScore;
-            document.getElementById('attempt-text').textContent = `You attempted ${totalAttempted} out of ${totalQuestions} questions`;
+            
+            // Add attempt information
+            const attemptText = document.getElementById('attempt-text') || document.createElement('p');
+            attemptText.id = 'attempt-text';
+            attemptText.textContent = `You attempted ${totalAttempted} out of ${totalQuestions} questions`;
+            
+            const resultScore = document.querySelector('.result-score');
+            if (!document.getElementById('attempt-text')) {
+                resultScore.appendChild(attemptText);
+            }
             
             // Customize feedback based on score
             const feedbackList = document.getElementById('feedback-list');
