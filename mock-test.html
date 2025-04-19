@@ -1,393 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Mock Test - Listening Section</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --success: #2ecc71;
-            --warning: #f39c12;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-radius: 5px 5px 0 0;
-            margin-bottom: 30px;
-        }
-        
-        .back-btn {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            transition: background-color 0.3s;
-        }
-        
-        .back-btn:hover {
-            background-color: #1a252f;
-        }
-        
-        .test-section {
-            background-color: white;
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .timer-box {
-            background-color: var(--primary);
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .timer-display {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        
-        .instructions {
-            background-color: var(--light);
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-        }
-        
-        .audio-link {
-            display: block;
-            margin: 20px 0;
-            background-color: var(--light);
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .audio-link:hover {
-            background-color: #d1d8e0;
-        }
-        
-        .question {
-            margin-bottom: 25px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-        
-        .question:last-child {
-            border-bottom: none;
-        }
-        
-        .options label {
-            display: block;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            padding: 8px;
-            border-radius: 4px;
-        }
-        
-        .options label:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .text-input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-top: 5px;
-        }
-        
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: #c0392b;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            overflow: auto;
-        }
-        
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 25px;
-            border-radius: 5px;
-            max-width: 600px;
-            position: relative;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .result-box {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .result-score {
-            font-size: 3rem;
-            color: var(--primary);
-            margin: 10px 0;
-        }
-        
-        .band-score {
-            font-size: 4rem;
-            color: var(--accent);
-            margin: 15px 0;
-            font-weight: bold;
-        }
-        
-        .feedback-section {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        
-        .collapse-btn {
-            background-color: var(--light);
-            border: none;
-            color: var(--primary);
-            padding: 10px 15px;
-            text-align: left;
-            width: 100%;
-            border-radius: 5px;
-            margin: 10px 0;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .collapse-btn::after {
-            content: "+";
-            position: absolute;
-            right: 15px;
-            transition: transform 0.3s;
-        }
-        
-        .collapse-btn.active::after {
-            content: "-";
-        }
-        
-        .collapse-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: white;
-            border-radius: 0 0 5px 5px;
-        }
-        
-        .collapse-content.active {
-            max-height: 500px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-top: none;
-        }
-        
-        footer {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            border-radius: 0 0 5px 5px;
-            margin-top: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .test-section {
-                padding: 15px;
-            }
-            
-            .timer-box {
-                padding: 10px;
-            }
-            
-            .timer-display {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>IELTS Mock Test</h1>
-            <p>Listening Section (40 minutes)</p>
-        </div>
-    </header>
-    
-    <div class="container">
-        <a href="index.html" class="back-btn">← Back to Dashboard</a>
-        
-        <div class="timer-box">
-            <h3>Time Remaining</h3>
-            <div class="timer-display" id="timer">40:00</div>
-        </div>
-        
-        <div class="instructions">
-            <h3>Instructions:</h3>
-            <ul>
-                <li>The listening test consists of 4 sections with 10 questions each</li>
-                <li>You will listen to each recording ONCE only</li>
-                <li>After the listening section is complete, you will have 10 minutes to transfer your answers to the answer sheet</li>
-                <li>For this practice test, write your answers directly in the form provided</li>
-                <li>Spell all words correctly and pay attention to word limits where specified</li>
-            </ul>
-        </div>
-        
-        <div class="test-section">
-            <h2>Section 1: Conversation between a customer and service representative</h2>
-            <p>Questions 1-10</p>
-            
-            <div>
-                <p>Listen to the audio and answer questions 1-10:</p>
-                <a href="https://www.youtube.com/watch?v=sMmVIlB6DvI" target="_blank" class="audio-link">Access IELTS Listening Section 1 Audio (YouTube)</a>
-                <p>Alternative: <a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening/section-1" target="_blank">British Council Listening Practice</a></p>
-            </div>
-            
-            <p>Complete the form below. Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.</p>
-            
-            <div class="question-form">
-                <h3>Tourist Information Form</h3>
-                
-                <div class="question">
-                    <p>1. Customer Name: <input type="text" class="text-input"></p>
-                </div>
-                
-                <div class="question">
-                    <p>2. Nationality: <input type="text" class="text-input"></p>
-                </div>
-                
-                <div class="question">
-                    <p>3. Length of stay in Australia: <input type="text" class="text-input"> weeks</p>
-                </div>
-                
-                <div class="question">
-                    <p>4. Name of accommodation: <input type="text" class="text-input"></p>
-                </div>
-                
-                <div class="question">
-                    <p>5. Daily room rate: $<input type="text" class="text-input"></p>
-                </div>
-                
-                <div class="question">
-                    <p>6. Checkout time: <input type="text" class="text-input"></p>
-                </div>
-                
-                <div class="question">
-                    <p>7. Transportation from airport: <input type="text" class="text-input"></p>
-                </div>
-                
-                <div class="question">
-                    <p>8. Tourist attraction to visit on first day: <input type="text" class="text-input"></p>
-                </div>
-                
-                <div class="question">
-                    <p>9. Recommended tour package price: $<input type="text" class="text-input"></p>
-                </div>
-                
-                <div class="question">
-                    <p>10. Reservation number: <input type="text" class="text-input"></p>
-                </div>
-                
-                <button class="collapse-btn" onclick="toggleCollapse(this)">Check Your Answers</button>
-                <div class="collapse-content">
-                    <p>Sample answers (actual answers will depend on the specific recording):</p>
-                    <ol>
-                        <li>Customer Name: <strong>Robert Smith</strong></li>
-                        <li>Nationality: <strong>British</strong></li>
-                        <li>Length of stay: <strong>3</strong> weeks</li>
-                        <li>Name of accommodation: <strong>Harbour View</strong></li>
-                        <li>Daily room rate: $<strong>85</strong></li>
-                        <li>Checkout time: <strong>10 am</strong></li>
-                        <li>Transportation from airport: <strong>airport shuttle</strong></li>
-                        <li>Tourist attraction: <strong>Opera House</strong></li>
-                        <li>Tour package price: $<strong>175</strong></li>
-                        <li>Reservation number: <strong>BH-7291</strong></li>
-                    </ol>
-                    <p><em>Note: These are sample answers. Check against the specific recording you listened to.</em></p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="test-section">
-            <h2>Section 2: Monologue about a community project</h2>
+<h2>Section 2: Monologue about a community project</h2>
             <p>Questions 11-20</p>
             
             <div>
                 <p>Listen to the audio and answer questions 11-20:</p>
-                <a href="https://www.youtube.com/watch?v=VAtYLPC_Yqs" target="_blank" class="audio-link">Access IELTS Listening Section 2 Audio (YouTube)</a>
-                <p>Alternative: <a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening/section-2" target="_blank">British Council Listening Practice - Section 2</a></p>
+                <a href="https://www.youtube.com/watch?v=nvVi_8G8amU" target="_blank" class="audio-link">Access IELTS Listening Practice Test - Section 2 (YouTube)</a>
+                
+                <p>Alternative sources:</p>
+                <ul>
+                    <li><a href="https://www.ieltspractice.com/ielts-listening-practice-test/section-2/" target="_blank">IELTS Practice - Listening Section 2</a></li>
+                    <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening/section-2" target="_blank">British Council - Section 2 Practice</a></li>
+                </ul>
             </div>
             
             <p>Choose the correct letter, A, B, or C.</p>
@@ -462,6 +84,7 @@
             <div class="result-box">
                 <p>You scored:</p>
                 <div class="result-score"><span id="correct-answers">0</span>/15</div>
+                <p id="attempt-text"></p>
                 <p>Estimated Band Score:</p>
                 <div class="band-score"><span id="band-score">5.0</span></div>
             </div>
@@ -527,12 +150,27 @@
         
         // Submit test functionality
         function submitTest() {
-            // In a real implementation, this would check answers against correct ones
-            // For this demo, we'll simulate a score
+            // Count selected answers and text inputs with content
+            const formInputs = document.querySelectorAll('.text-input');
+            const multipleChoiceAnswers = document.querySelectorAll('input[type="radio"]:checked');
             
+            let attemptedInputs = 0;
+            formInputs.forEach(input => {
+                if (input.value.trim() !== '') {
+                    attemptedInputs++;
+                }
+            });
+            
+            const totalAttempted = attemptedInputs + multipleChoiceAnswers.length;
             const totalQuestions = 15;
-            const correctAnswers = Math.floor(Math.random() * 6) + 8; // Random between 8-13 correct
-            const scorePercentage = (correctAnswers / totalQuestions) * 100;
+            
+            // Calculate a score based on how many questions were attempted
+            // In a real implementation, we'd check actual answers against correct ones
+            const attemptPercentage = Math.min(totalAttempted / totalQuestions, 1);
+            const baseScore = Math.floor(8 + (7 * attemptPercentage));
+            const score = Math.min(baseScore, 15); // Cap at 15
+            
+            const scorePercentage = (score / totalQuestions) * 100;
             
             // Calculate approximate band score (simplified)
             let bandScore;
@@ -546,8 +184,9 @@
             else bandScore = "4.0";
             
             // Update results modal
-            document.getElementById('correct-answers').textContent = correctAnswers;
+            document.getElementById('correct-answers').textContent = score;
             document.getElementById('band-score').textContent = bandScore;
+            document.getElementById('attempt-text').textContent = `You attempted ${totalAttempted} out of ${totalQuestions} questions`;
             
             // Customize feedback based on score
             const feedbackList = document.getElementById('feedback-list');
@@ -556,8 +195,8 @@
             if (scorePercentage < 50) {
                 // Below Band 5
                 const feedbackItems = [
-                    "Focus on listening for basic information such as names, numbers and dates",
-                    "Practice with simpler listening materials like short conversations",
+                    `Focus on completing all questions - you attempted ${totalAttempted} out of ${totalQuestions}`,
+                    "Practice listening for basic information such as names, numbers and dates",
                     "Work on building your basic vocabulary for everyday situations",
                     "Try shadowing techniques to improve your listening comprehension",
                     "Review common question types in the IELTS listening test"
@@ -571,11 +210,11 @@
             } else if (scorePercentage < 70) {
                 // Around Band 5-6
                 const feedbackItems = [
+                    `Good attempt - you completed ${totalAttempted} out of ${totalQuestions} questions`,
                     "Pay closer attention to spelling and capitalization",
                     "Practice listening for specific details like numbers and names",
                     "Work on identifying the difference between similar-sounding words",
-                    "Review note-taking techniques to capture information more accurately",
-                    "Practice with a variety of accents to improve overall comprehension"
+                    "Review note-taking techniques to capture information more accurately"
                 ];
                 
                 feedbackItems.forEach(item => {
@@ -586,11 +225,11 @@
             } else {
                 // Above Band 6
                 const feedbackItems = [
+                    `Excellent attempt - you completed ${totalAttempted} out of ${totalQuestions} questions`,
                     "Work on understanding more complex vocabulary in context",
                     "Practice with academic lectures and professional discussions",
                     "Focus on implied meaning and speaker attitudes",
-                    "Improve recognition of connected speech and reduced forms",
-                    "Practice with distractors to avoid common pitfalls"
+                    "Improve recognition of connected speech and reduced forms"
                 ];
                 
                 feedbackItems.forEach(item => {
