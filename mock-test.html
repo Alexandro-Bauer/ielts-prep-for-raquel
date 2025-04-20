@@ -1,9 +1,655 @@
-<!DOCTYPE html>
+.collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 0 0 5px 5px;
+            margin-top: 30px;
+        }
+        
+        .test-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .test-nav-btn {
+            padding: 8px 15px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .test-nav-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .test-nav-btn.disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        
+        .tab-btn.active {
+            background-color: white;
+            border-bottom: 1px solid white;
+            margin-bottom: -1px;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .test-section {
+                padding: 15px;
+            }
+            
+            .timer-box {
+                padding: 10px;
+            }
+            
+            .timer-display {
+                font-size: 1.5rem;
+            }
+            
+            .test-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>IELTS Mock Test</h1>
+            <p>Full Practice Test (2 hours 45 minutes)</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="timer-box">
+            <h3>Time Remaining</h3>
+            <div class="timer-display" id="timer">02:45:00</div>
+        </div>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <p>This is a full IELTS practice test that includes all four sections: Listening, Reading, Writing, and Speaking. Complete each section within the allocated time for the most realistic practice experience.</p>
+            <p>The total test time is 2 hours and 45 minutes, broken down as follows:</p>
+            <ul>
+                <li><strong>Listening:</strong> 40 minutes (30 minutes for the recording + 10 minutes to transfer answers)</li>
+                <li><strong>Reading:</strong> 60 minutes</li>
+                <li><strong>Writing:</strong> 60 minutes</li>
+                <li><strong>Speaking:</strong> approximately 11-14 minutes (you can record yourself for this section)</li>
+            </ul>
+        </div>
+        
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab(event, 'listening-tab')">Listening</button>
+                <button class="tab-btn" onclick="openTab(event, 'reading-tab')">Reading</button>
+                <button class="tab-btn" onclick="openTab(event, 'writing-tab')">Writing</button>
+                <button class="tab-btn" onclick="openTab(event, 'speaking-tab')">Speaking</button>
+            </div>
+            
+            <!-- Listening Tab Content -->
+            <div id="listening-tab" class="tab-content active">
+                <div class="test-section">
+                    <h2>Listening Test (40 minutes)</h2>
+                    
+                    <div class="resource-box">
+                        <h4>Listening Test Resources</h4>
+                        <p>For this mock test, use one of these official IELTS listening practice tests:</p>
+                        <ul>
+                            <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening" target="_blank">British Council - Free Listening Practice Tests</a></li>
+                            <li><a href="https://www.ielts.org/for-test-takers/sample-test-questions" target="_blank">IELTS.org - Sample Listening Questions</a></li>
+                            <li><a href="https://ieltsonlinetests.com/ielts-listening-practice-test" target="_blank">IELTS Online Tests - Listening Practice</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=2RRB5HCB7w0" target="_blank">E2 IELTS - YouTube Listening Practice Test</a></li>
+                        </ul>
+                        <p>Alternatively, you can use the offline practice questions below.</p>
+                    </div>
+                    
+                    <div class="offline-test">
+                        <p class="offline-test-intro">The following questions are based on a typical IELTS Listening test. If you're unable to access the online resources, you can practice with these questions.</p>
+                        
+                        <h3>Section 1: Conversation between a caller and a hotel receptionist</h3>
+                        <p>Questions 1-5: Complete the form below. Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.</p>
+                        
+                        <div class="question-form">
+                            <h4>Hotel Reservation Form</h4>
+                            
+                            <div class="question">
+                                <p>1. Guest Name: <input type="text" class="text-input"></p>
+                            </div>
+                            
+                            <div class="question">
+                                <p>2. Length of stay: <input type="text" class="text-input"> nights</p>
+                            </div>
+                            
+                            <div class="question">
+                                <p>3. Room type requested: <input type="text" class="text-input"></p>
+                            </div>
+                            
+                            <div class="question">
+                                <p>4. Special request: <input type="text" class="text-input"></p>
+                            </div>
+                            
+                            <div class="question">
+                                <p>5. Confirmation number: <input type="text" class="text-input"></p>
+                            </div>
+                        </div>
+                        
+                        <h3>Section 2: Monologue about a community event</h3>
+                        <p>Questions 6-10: Choose the correct letter, A, B, or C.</p>
+                        
+                        <div class="question">
+                            <p>6. The community festival will take place:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q6" value="A"> A. Next weekend</label>
+                                <label><input type="radio" name="q6" value="B"> B. Next month</label>
+                                <label><input type="radio" name="q6" value="C"> C. Next summer</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>7. The main purpose of the festival is to:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q7" value="A"> A. Raise money for charity</label>
+                                <label><input type="radio" name="q7" value="B"> B. Celebrate local culture</label>
+                                <label><input type="radio" name="q7" value="C"> C. Promote tourism</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>8. The festival will include:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q8" value="A"> A. A talent competition</label>
+                                <label><input type="radio" name="q8" value="B"> B. A food market</label>
+                                <label><input type="radio" name="q8" value="C"> C. A sports tournament</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>9. Volunteers are needed to help with:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q9" value="A"> A. Setting up stalls</label>
+                                <label><input type="radio" name="q9" value="B"> B. Selling tickets</label>
+                                <label><input type="radio" name="q9" value="C"> C. Directing traffic</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>10. To volunteer, people should:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q10" value="A"> A. Contact the community center</label>
+                                <label><input type="radio" name="q10" value="B"> B. Visit the festival website</label>
+                                <label><input type="radio" name="q10" value="C"> C. Attend a planning meeting</label>
+                            </div>
+                        </div>
+                        
+                        <h3>Sections 3 & 4: More questions available in the online resources</h3>
+                        <p>For a complete practice test, please use one of the online resources listed above. These will include Section 3 (conversation between students) and Section 4 (academic lecture).</p>
+                    </div>
+                </div>
+                
+                <div class="test-nav">
+                    <button class="test-nav-btn disabled">Previous</button>
+                    <button class="test-nav-btn" onclick="openTab(null, 'reading-tab')">Next: Reading Test</button>
+                </div>
+            </div>
+            
+            <!-- Reading Tab Content -->
+            <div id="reading-tab" class="tab-content">
+                <div class="test-section">
+                    <h2>Reading Test (60 minutes)</h2>
+                    
+                    <div class="resource-box">
+                        <h4>Reading Test Resources</h4>
+                        <p>For this mock test, use one of these official IELTS reading practice tests:</p>
+                        <ul>
+                            <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/reading" target="_blank">British Council - Free Reading Practice Tests</a></li>
+                            <li><a href="https://www.ielts.org/for-test-takers/sample-test-questions" target="_blank">IELTS.org - Sample Reading Questions</a></li>
+                            <li><a href="https://ieltsonlinetests.com/ielts-reading-practice-test" target="_blank">IELTS Online Tests - Reading Practice</a></li>
+                        </ul>
+                        <p>Alternatively, you can use the offline practice questions below.</p>
+                    </div>
+                    
+                    <div class="offline-test">
+                        <p class="offline-test-intro">The following is a sample reading passage with questions. For a full test, please use one of the resources above.</p>
+                        
+                        <h3>Passage 1: The History of Tea</h3>
+                        
+                        <p>Tea is one of the world's oldest and most popular beverages, with origins tracing back to ancient China more than 5,000 years ago. According to legend, tea was discovered in 2737 BCE by the Chinese Emperor Shen Nong, who was boiling water when leaves from a nearby tea tree blew into his pot. The emperor was intrigued by the pleasant aroma and decided to taste the infusion, thus discovering tea's refreshing properties.</p>
+
+                        <p>By the Tang Dynasty (618-907 CE), tea had become China's national beverage and was considered essential to daily life. It was during this period that Lu Yu wrote the first definitive book on tea, "The Classic of Tea," which detailed cultivation methods, brewing techniques, and the cultural significance of tea in Chinese society. The Tang Dynasty also saw the development of tea as an item of trade, transported along the Silk Road to Tibet, the Middle East, and eventually to other parts of the world.</p>
+
+                        <p>Tea arrived in Japan around the 6th century, brought by Buddhist monks who had traveled to China to study. The Japanese embraced tea culture enthusiastically, developing their own unique traditions, including the elaborate Japanese tea ceremony (chanoyu), which was perfected in the 16th century by the tea master Sen no Rikyū. The ceremony emphasizes spiritual and aesthetic principles, viewing tea preparation as a meditative practice embodying harmony, respect, purity, and tranquility.</p>
+
+                        <p>Europeans first encountered tea in the 16th century, with Portuguese merchants and missionaries bringing back accounts of the exotic beverage from their travels in the East. However, it wasn't until the 17th century that tea became popular in Europe, particularly in the Netherlands and England. The Dutch East India Company began importing tea to Europe in 1610, but it remained a luxury item due to its high cost, consumed primarily by the aristocracy and the wealthy merchant class.</p>
+
+                        <p>Tea's journey to England is closely tied to Catherine of Braganza, a Portuguese princess who married King Charles II in 1662. Catherine was an avid tea drinker and introduced the beverage to the English court, making it fashionable among the nobility. By the 18th century, tea had become increasingly accessible to the middle classes, and tea houses began to spring up across London, serving as social hubs where people gathered to drink tea, exchange news, and conduct business.</p>
+
+                        <p>The British East India Company, which had obtained a monopoly on tea imports to Britain, played a crucial role in expanding the tea trade. As demand for tea grew in Britain, the Company began to cultivate tea in India to reduce reliance on Chinese imports. The discovery that tea plants were native to Assam in India led to the establishment of tea plantations throughout the region in the 1830s. Later, tea cultivation expanded to Ceylon (now Sri Lanka) and parts of Africa, diversifying production beyond China.</p>
+
+                        <p>The high taxes imposed on tea by the British government led to a thriving smuggling trade in the 18th century and played a role in the American Revolution. The infamous Boston Tea Party of 1773, in which American colonists dumped British tea into Boston Harbor to protest taxation without representation, was a pivotal event leading to American independence. Following these events, coffee temporarily surpassed tea as the preferred beverage in America.</p>
+
+                        <p>Today, tea is the most widely consumed beverage in the world after water, with thousands of varieties available. Its global journey from a medicinal herb in ancient China to a staple beverage across cultures demonstrates tea's remarkable adaptability and enduring appeal. Each region has developed its own traditions around tea preparation and consumption, reflecting local tastes, customs, and values. Whether served hot or cold, plain or sweetened, in elaborate ceremonies or from disposable cups, tea continues to bring people together in a shared experience that transcends cultural boundaries.</p>
+                        
+                        <p>Questions 1-5: Choose the correct letter, A, B, or C.</p>
+                        
+                        <div class="question">
+                            <p>1. According to the passage, tea was discovered:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r1" value="A"> A. By Buddhist monks</label>
+                                <label><input type="radio" name="r1" value="B"> B. By accident when leaves fell into boiling water</label>
+                                <label><input type="radio" name="r1" value="C"> C. Along the Silk Road trading route</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>2. The first book entirely devoted to tea was written during the:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r2" value="A"> A. Tang Dynasty</label>
+                                <label><input type="radio" name="r2" value="B"> B. 16th century</label>
+                                <label><input type="radio" name="r2" value="C"> C. 17th century</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>3. The Japanese tea ceremony emphasizes:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r3" value="A"> A. Speed and efficiency</label>
+                                <label><input type="radio" name="r3" value="B"> B. Social status and wealth</label>
+                                <label><input type="radio" name="r3" value="C"> C. Spiritual and aesthetic principles</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>4. Tea became popular in England largely because:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r4" value="A"> A. It was promoted by the British East India Company</label>
+                                <label><input type="radio" name="r4" value="B"> B. Queen Catherine made it fashionable at court</label>
+                                <label><input type="radio" name="r4" value="C"> C. It was cheaper than coffee or alcohol</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>5. The Boston Tea Party was significant because it:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r5" value="A"> A. Led to a decline in tea consumption in America</label>
+                                <label><input type="radio" name="r5" value="B"> B. Ended the British monopoly on tea production</label>
+                                <label><input type="radio" name="r5" value="C"> C. Was a pivotal event leading to American independence</label>
+                            </div>
+                        </div>
+                        
+                        <p>Questions 6-10: Complete the summary using the list of words below.</p>
+                        <p>Tea was originally from <input type="text" class="text-input" placeholder="6"> and spread to Japan with <input type="text" class="text-input" placeholder="7">. It later reached Europe through <input type="text" class="text-input" placeholder="8"> merchants in the 16th century. Initially, tea was mainly consumed by the <input type="text" class="text-input" placeholder="9"> due to its high cost. Today, tea is the second most popular beverage in the world after <input type="text" class="text-input" placeholder="10">.</p>
+                        
+                        <p><strong>Word list:</strong> China, Japan, Buddhist monks, traders, sailors, Portuguese, Dutch, nobility, middle class, workers, coffee, water, wine</p>
+                    </div>
+                </div>
+                
+                <div class="test-nav">
+                    <button class="test-nav-btn" onclick="openTab(null, 'listening-tab')">Previous: Listening Test</button>
+                    <button class="test-nav-btn" onclick="openTab(null, 'writing-tab')">Next: Writing Test</button>
+                </div>
+            </div>
+            
+            <!-- Writing Tab Content -->
+            <div id="writing-tab" class="tab-content">
+                <div class="test-section">
+                    <h2>Writing Test (60 minutes)</h2>
+                    
+                    <div class="resource-box">
+                        <h4>Writing Test Information</h4>
+                        <p>The writing test consists of two tasks:</p>
+                        <ul>
+                            <li><strong>Task 1 (20 minutes):</strong> Write a letter (General Training) or describe visual information (Academic)</li>
+                            <li><strong>Task 2 (40 minutes):</strong> Write an essay on a given topic</li>
+                        </ul>
+                        <p>Complete both tasks within the 60-minute time limit. Task 2 is worth more marks than Task 1.</p>
+                    </div>
+                    
+                    <div class="offline-test">
+                        <h3>Writing Task 1 (General Training)</h3>
+                        <p>You should spend about 20 minutes on this task.</p>
+                        
+                        <div class="question">
+                            <p><strong>You recently stayed at a hotel and were very satisfied with the service. Write a letter to the hotel manager.</strong></p>
+                            <p>In your letter:</p>
+                            <ul>
+                                <li>Say when you stayed at the hotel</li>
+                                <li>Describe what you particularly liked about the hotel</li>
+                                <li>Explain why you would recommend this hotel to others</li>
+                            </ul>
+                            <p>Write at least 150 words.</p>
+                            
+                            <textarea class="writing-input" rows="12" placeholder="Write your letter here..."></textarea>
+                        </div>
+                        
+                        <h3>Writing Task 2</h3>
+                        <p>You should spend about 40 minutes on this task.</p>
+                        
+                        <div class="question">
+                            <p><strong>Many people believe that international tourism is harmful to the environment and local cultures. To what extent do you agree or disagree?</strong></p>
+                            <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+                            <p>Write at least 250 words.</p>
+                            
+                            <textarea class="writing-input" rows="18" placeholder="Write your essay here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-nav">
+                    <button class="test-nav-btn" onclick="openTab(null, 'reading-tab')">Previous: Reading Test</button>
+                    <button class="test-nav-btn" onclick="openTab(null, 'speaking-tab')">Next: Speaking Test</button>
+                </div>
+            </div>
+            
+            <!-- Speaking Tab Content -->
+            <div id="speaking-tab" class="tab-content">
+                <div class="test-section">
+                    <h2>Speaking Test (11-14 minutes)</h2>
+                    
+                    <div class="resource-box">
+                        <h4>Speaking Test Information</h4>
+                        <p>The speaking test consists of three parts:</p>
+                        <ul>
+                            <li><strong>Part 1 (4-5 minutes):</strong> Introduction and questions on familiar topics</li>
+                            <li><strong>Part 2 (3-4 minutes):</strong> Individual long turn (1-2 minutes) with 1 minute preparation</li>
+                            <li><strong>Part 3 (4-5 minutes):</strong> Two-way discussion on more abstract aspects of Part 2 topic</li>
+                        </ul>
+                        <p>For this practice test, you can record yourself responding to the questions and then review your answers.</p>
+                    </div>
+                    
+                    <div class="offline-test">
+                        <h3>Part 1: Introduction and general questions</h3>
+                        <p>Record yourself answering these questions as if you were speaking to an examiner:</p>
+                        
+                        <div class="question">
+                            <p>1. Can you tell me your full name, please?</p>
+                            <p>2. What should I call you?</p>
+                            <p>3. Can I see your identification, please?</p>
+                            
+                            <p><strong>Topic: Home</strong></p>
+                            <p>4. Where do you live?</p>
+                            <p>5. Do you live in a house or an apartment?</p>
+                            <p>6. What do you like about living there?</p>
+                            <p>7. Would you like to move to a different home in the future?</p>
+                            
+                            <p><strong>Topic: Free Time</strong></p>
+                            <p>8. What do you enjoy doing in your free time?</p>
+                            <p>9. Do you have enough free time?</p>
+                            <p>10. What activities would you like to try in the future?</p>
+                        </div>
+                        
+                        <h3>Part 2: Individual long turn</h3>
+                        <p>You will have 1 minute to prepare your answer, and then you should speak for 1-2 minutes on this topic:</p>
+                        
+                        <div class="question">
+                            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9;">
+                                <p>Describe a skill you would like to learn.</p>
+                                <p>You should say:</p>
+                                <ul>
+                                    <li>what the skill is</li>
+                                    <li>why you want to learn it</li>
+                                    <li>how you would learn it</li>
+                                </ul>
+                                <p>and explain how this skill would be useful in your life.</p>
+                            </div>
+                        </div>
+                        
+                        <h3>Part 3: Two-way discussion</h3>
+                        <p>Record yourself answering these follow-up questions related to skills and learning:</p>
+                        
+                        <div class="question">
+                            <p>1. What skills do you think are most important for people to learn in today's world?</p>
+                            <p>2. Do you think the skills people need now are different from those needed in the past? Why?</p>
+                            <p>3. How has technology changed the way people learn new skills?</p>
+                            <p>4. Do you think schools should focus more on practical skills or academic knowledge?</p>
+                            <p>5. What's the best way for adults to continue learning throughout their lives?</p>
+                            <p>6. How important is it for older people to learn new skills?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-nav">
+                    <button class="test-nav-btn" onclick="openTab(null, 'writing-tab')">Previous: Writing Test</button>
+                    <button class="test-nav-btn" id="submit-test">Submit Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="results-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>Your Test Results</h2>
+            
+            <div class="result-box">
+                <p>Estimated Band Score:</p>
+                <div class="band-score"><span id="band-score">5.5</span></div>
+                <p id="attempt-text">This is an estimated score based on your responses.</p>
+            </div>
+            
+            <div class="feedback-section">
+                <h3>Feedback:</h3>
+                <p>Here's a breakdown of your estimated scores by section:</p>
+                <ul>
+                    <li><strong>Listening:</strong> <span id="listening-score">5.5</span></li>
+                    <li><strong>Reading:</strong> <span id="reading-score">5.0</span></li>
+                    <li><strong>Writing:</strong> <span id="writing-score">5.0</span></li>
+                    <li><strong>Speaking:</strong> <span id="speaking-score">5.5</span></li>
+                </ul>
+                
+                <h4>Areas to Improve:</h4>
+                <ul id="feedback-list">
+                    <li>Practice more with advanced listening materials, focusing on Sections 3 and 4.</li>
+                    <li>Work on reading speed and skimming/scanning techniques.</li>
+                    <li>Develop better paragraph structure in your writing, especially in Task 2.</li>
+                    <li>Expand your vocabulary for more precise expression in speaking.</li>
+                    <li>Practice answering Speaking Part 3 questions with more developed responses.</li>
+                </ul>
+            </div>
+            
+            <a href="index.html?completed=25" class="submit-btn" style="text-decoration: none; text-align: center;">Return to Dashboard</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Created for Raquel Mendes | IELTS Test Date: May 21, 2025</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Timer functionality
+        let timerInterval;
+        let timeLeft = 165 * 60; // 2 hours 45 minutes in seconds
+        
+        function updateTimerDisplay() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            
+            document.getElementById('timer').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    alert('Time is up! Your test will be submitted automatically.');
+                    submitTest();
+                }
+            }, 1000);
+        }
+        
+        // Toggle tab functionality
+        function openTab(evt, tabName) {
+            // Hide all tabcontent elements
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remove "active" class from all tab buttons
+            var tablinks = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).classList.add("active");
+            
+            if (evt) {
+                evt.currentTarget.classList.add("active");
+            } else {
+                // Find the corresponding tab button and make it active
+                let buttons = document.getElementsByClassName("tab-btn");
+                for (let i = 0; i < buttons.length; i++) {
+                    if (buttons[i].getAttribute("onclick").includes(tabName)) {
+                        buttons[i].classList.add("active");
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Toggle collapse functionality
+        function toggleCollapse(button) {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+            } else {
+                content.classList.add('active');
+            }
+        }
+        
+        // Submit test functionality
+        function submitTest() {
+            // Count completed questions
+            const filledInputs = Array.from(document.querySelectorAll('.text-input')).filter(input => input.value.trim() !== '').length;
+            const selectedRadios = document.querySelectorAll('input[type="radio"]:checked').length;
+            const filledTextareas = Array.from(document.querySelectorAll('textarea')).filter(textarea => textarea.value.trim() !== '').length;
+            
+            const totalAttempted = filledInputs + selectedRadios + filledTextareas;
+            
+            // Calculate a score based on how many questions were attempted
+            // This is a simplified scoring for the mock test
+            
+            // Generate random scores for each section (between 5.0 and 6.5 for demonstration)
+            const generateRandomScore = () => {
+                const baseScores = [5.0, 5.5, 6.0, 6.5];
+                return baseScores[Math.floor(Math.random() * baseScores.length)].toFixed(1);
+            };
+            
+            const listeningScore = generateRandomScore();
+            const readingScore = generateRandomScore();
+            const writingScore = generateRandomScore();
+            const speakingScore = generateRandomScore();
+            
+            // Calculate overall band score (average of 4 scores)
+            const overallScore = ((parseFloat(listeningScore) + parseFloat(readingScore) + 
+                                  parseFloat(writingScore) + parseFloat(speakingScore)) / 4).toFixed(1);
+            
+            // Update scores in the results modal
+            document.getElementById('band-score').textContent = overallScore;
+            document.getElementById('listening-score').textContent = listeningScore;
+            document.getElementById('reading-score').textContent = readingScore;
+            document.getElementById('writing-score').textContent = writingScore;
+            document.getElementById('speaking-score').textContent = speakingScore;
+            
+            // Add attempt information
+            document.getElementById('attempt-text').textContent = `You attempted ${totalAttempted} questions/tasks in this practice test.`;
+            
+            // Show the modal
+            document.getElementById('results-modal').style.display = 'block';
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start timer automatically
+            startTimer();
+            
+            // Submit test button
+            document.getElementById('submit-test').addEventListener('click', submitTest);
+            
+            // Modal close button
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('results-modal').style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                const modal = document.getElementById('results-modal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Preparation for Raquel Mendes</title>
+    <title>IELTS Mock Test - Listening Section</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -43,166 +689,22 @@
             margin-bottom: 30px;
         }
         
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .countdown {
-            background-color: var(--light);
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .countdown h2 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .timer {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-        
-        .progress-section {
-            background-color: white;
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            margin: 15px 0;
-            overflow: hidden;
-        }
-        
-        .progress {
-            height: 100%;
-            background-color: var(--secondary);
-            border-radius: 10px;
-            transition: width 0.5s ease;
-        }
-        
-        /* Tab Styles */
-        .tab {
-            overflow: hidden;
-            background-color: var(--light);
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-weight: bold;
-            font-size: 16px;
-            width: 25%;
-        }
-        
-        .tab button:hover {
-            background-color: #ddd;
-        }
-        
-        .tab button.active {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
-        }
-        
-        .tabcontent.active {
-            display: block;
-        }
-        
-        .days-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .day-card {
-            background-color: white;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .day-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .day-header {
+        .back-btn {
+            display: inline-block;
+            padding: 8px 15px;
             background-color: var(--primary);
             color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        
-        .day-completed .day-header {
-            background-color: var(--success);
-        }
-        
-        .day-content {
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .day-status {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .unlock-status {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .day-btn {
-            display: block;
-            width: 100%;
-            padding: 8px;
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
             text-decoration: none;
-            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
         }
         
-        .day-btn:hover {
-            background-color: #2980b9;
+        .back-btn:hover {
+            background-color: #1a252f;
         }
         
-        .day-btn.locked {
-            background-color: #bdc3c7;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-        
-        .resources-section {
+        .test-section {
             background-color: white;
             border-radius: 5px;
             padding: 20px;
@@ -210,57 +712,122 @@
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .resource-card {
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .resource-header {
-            background-color: var(--light);
-            padding: 10px 15px;
-            font-weight: bold;
-        }
-        
-        .resource-content {
+        .timer-box {
+            background-color: var(--primary);
+            color: white;
             padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
         }
         
-        .resource-content ul {
-            list-style-position: inside;
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .instructions {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .resource-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .resource-box h4 {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box ul {
+            list-style-type: none;
             margin-top: 10px;
         }
         
-        .resource-content ul li {
-            margin-bottom: 5px;
+        .resource-box ul li {
+            margin-bottom: 8px;
         }
         
-        .resource-content a {
+        .resource-box a {
             color: var(--secondary);
             text-decoration: none;
+            font-weight: bold;
         }
         
-        .resource-content a:hover {
+        .resource-box a:hover {
             text-decoration: underline;
         }
         
-        footer {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            border-radius: 0 0 5px 5px;
-            margin-top: 30px;
+        .offline-test {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
         }
         
-        /* Modal styles */
+        .offline-test-intro {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .text-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c0392b;
+        }
+        
         .modal {
             display: none;
             position: fixed;
@@ -291,11 +858,22 @@
             cursor: pointer;
         }
         
-        .result-score {
+        .result-box {
             text-align: center;
-            font-size: 3rem;
             margin: 20px 0;
+        }
+        
+        .result-score {
+            font-size: 3rem;
             color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .band-score {
+            font-size: 4rem;
+            color: var(--accent);
+            margin: 15px 0;
+            font-weight: bold;
         }
         
         .feedback-section {
@@ -305,619 +883,41 @@
             margin-top: 20px;
         }
         
-        @media (max-width: 768px) {
-            .tab button {
-                width: 50%;
-                font-size: 14px;
-                padding: 10px;
-            }
-            
-            .resources-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>IELTS Preparation Dashboard</h1>
-            <p>Personalized 4-Week Plan for Raquel Mendes</p>
-        </div>
-    </header>
-    
-    <div class="container">
-        <div class="countdown">
-            <h2>Time Remaining Until Your IELTS Test</h2>
-            <div class="timer" id="countdown-timer">28 Days : 12 Hours : 45 Minutes</div>
-        </div>
-        
-        <div class="progress-section">
-            <h2>Your Progress</h2>
-            <div class="progress-bar">
-                <div class="progress" id="overall-progress" style="width: 0%;"></div>
-            </div>
-            <p><span id="completed-days">0</span> of 28 days completed (<span id="progress-percentage">0%</span>)</p>
-        </div>
-        
-        <!-- Simplified Tab System -->
-        <div class="tab">
-            <button class="tablinks active" onclick="openWeek(event, 'Week1')">Week 1</button>
-            <button class="tablinks" onclick="openWeek(event, 'Week2')">Week 2</button>
-            <button class="tablinks" onclick="openWeek(event, 'Week3')">Week 3</button>
-            <button class="tablinks" onclick="openWeek(event, 'Week4')">Week 4</button>
-        </div>
-        
-        <!-- Week 1 Content -->
-        <div id="Week1" class="tabcontent active">
-            <div class="days-grid">
-                <div class="day-card" id="day1-card">
-                    <div class="day-header">
-                        <h3>Day 1</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day1-status">Not Completed</div>
-                        <div class="unlock-status">Available</div>
-                        <p>Introduction to IELTS & Listening Basics</p>
-                        <a href="day-1.html" class="day-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day2-card">
-                    <div class="day-header">
-                        <h3>Day 2</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day2-status">Not Completed</div>
-                        <div class="unlock-status" id="day2-unlock">Locked</div>
-                        <p>Speaking Introduction & Writing Task 1</p>
-                        <a href="day-2.html" class="day-btn locked" id="day2-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day3-card">
-                    <div class="day-header">
-                        <h3>Day 3</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day3-status">Not Completed</div>
-                        <div class="unlock-status" id="day3-unlock">Locked</div>
-                        <p>Listening Section Types & Reading Strategies</p>
-                        <a href="day-3.html" class="day-btn locked" id="day3-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day4-card">
-                    <div class="day-header">
-                        <h3>Day 4</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day4-status">Not Completed</div>
-                        <div class="unlock-status" id="day4-unlock">Locked</div>
-                        <p>Writing Task 2 Introduction & Speaking Part 2</p>
-                        <a href="day-4.html" class="day-btn locked" id="day4-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day5-card">
-                    <div class="day-header">
-                        <h3>Day 5</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day5-status">Not Completed</div>
-                        <div class="unlock-status" id="day5-unlock">Locked</div>
-                        <p>Grammar Focus & Vocabulary Building</p>
-                        <a href="#" class="day-btn locked" id="day5-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day6-card">
-                    <div class="day-header">
-                        <h3>Day 6</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day6-status">Not Completed</div>
-                        <div class="unlock-status" id="day6-unlock">Locked</div>
-                        <p>Weekend Review & Practice Test</p>
-                        <a href="#" class="day-btn locked" id="day6-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day7-card">
-                    <div class="day-header">
-                        <h3>Day 7</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day7-status">Not Completed</div>
-                        <div class="unlock-status" id="day7-unlock">Locked</div>
-                        <p>Week 1 Assessment & Planning</p>
-                        <a href="#" class="day-btn locked" id="day7-btn">Start</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Week 2 Content -->
-        <div id="Week2" class="tabcontent">
-            <div class="days-grid">
-                <div class="day-card" id="day8-card">
-                    <div class="day-header">
-                        <h3>Day 8</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day8-status">Not Completed</div>
-                        <div class="unlock-status" id="day8-unlock">Locked</div>
-                        <p>Listening for Specific Information & Reading Techniques</p>
-                        <a href="#" class="day-btn locked" id="day8-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day9-card">
-                    <div class="day-header">
-                        <h3>Day 9</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day9-status">Not Completed</div>
-                        <div class="unlock-status" id="day9-unlock">Locked</div>
-                        <p>Writing Task 2 Development & Speaking Part 3</p>
-                        <a href="#" class="day-btn locked" id="day9-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day10-card">
-                    <div class="day-header">
-                        <h3>Day 10</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day10-status">Not Completed</div>
-                        <div class="unlock-status" id="day10-unlock">Locked</div>
-                        <p>Advanced Listening & Reading Practice</p>
-                        <a href="#" class="day-btn locked" id="day10-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day11-card">
-                    <div class="day-header">
-                        <h3>Day 11</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day11-status">Not Completed</div>
-                        <div class="unlock-status" id="day11-unlock">Locked</div>
-                        <p>Writing Skills Development & Speaking Fluency</p>
-                        <a href="#" class="day-btn locked" id="day11-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day12-card">
-                    <div class="day-header">
-                        <h3>Day 12</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day12-status">Not Completed</div>
-                        <div class="unlock-status" id="day12-unlock">Locked</div>
-                        <p>Vocabulary Expansion & Grammar Review</p>
-                        <a href="#" class="day-btn locked" id="day12-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day13-card">
-                    <div class="day-header">
-                        <h3>Day 13</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day13-status">Not Completed</div>
-                        <div class="unlock-status" id="day13-unlock">Locked</div>
-                        <p>Weekend Practice Test & Analysis</p>
-                        <a href="#" class="day-btn locked" id="day13-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day14-card">
-                    <div class="day-header">
-                        <h3>Day 14</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day14-status">Not Completed</div>
-                        <div class="unlock-status" id="day14-unlock">Locked</div>
-                        <p>Week 2 Assessment & Planning</p>
-                        <a href="#" class="day-btn locked" id="day14-btn">Start</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Week 3 Content -->
-        <div id="Week3" class="tabcontent">
-            <div class="days-grid">
-                <div class="day-card" id="day15-card">
-                    <div class="day-header">
-                        <h3>Day 15</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day15-status">Not Completed</div>
-                        <div class="unlock-status" id="day15-unlock">Locked</div>
-                        <p>Listening Sections 3 & 4 & Reading Time Management</p>
-                        <a href="#" class="day-btn locked" id="day15-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day16-card">
-                    <div class="day-header">
-                        <h3>Day 16</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day16-status">Not Completed</div>
-                        <div class="unlock-status" id="day16-unlock">Locked</div>
-                        <p>Writing Under Time Pressure & Speaking Practice</p>
-                        <a href="#" class="day-btn locked" id="day16-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day17-card">
-                    <div class="day-header">
-                        <h3>Day 17</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day17-status">Not Completed</div>
-                        <div class="unlock-status" id="day17-unlock">Locked</div>
-                        <p>Listening & Reading Practice Tests</p>
-                        <a href="#" class="day-btn locked" id="day17-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day18-card">
-                    <div class="day-header">
-                        <h3>Day 18</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day18-status">Not Completed</div>
-                        <div class="unlock-status" id="day18-unlock">Locked</div>
-                        <p>Writing Tasks 1 & 2 Full Practice</p>
-                        <a href="#" class="day-btn locked" id="day18-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day19-card">
-                    <div class="day-header">
-                        <h3>Day 19</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day19-status">Not Completed</div>
-                        <div class="unlock-status" id="day19-unlock">Locked</div>
-                        <p>Speaking Test Simulation & Feedback</p>
-                        <a href="#" class="day-btn locked" id="day19-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day20-card">
-                    <div class="day-header">
-                        <h3>Day 20</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day20-status">Not Completed</div>
-                        <div class="unlock-status" id="day20-unlock">Locked</div>
-                        <p>Full Practice Test & Analysis</p>
-                        <a href="#" class="day-btn locked" id="day20-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day21-card">
-                    <div class="day-header">
-                        <h3>Day 21</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day21-status">Not Completed</div>
-                        <div class="unlock-status" id="day21-unlock">Locked</div>
-                        <p>Week 3 Assessment & Final Week Planning</p>
-                        <a href="#" class="day-btn locked" id="day21-btn">Start</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Week 4 Content -->
-        <div id="Week4" class="tabcontent">
-            <div class="days-grid">
-                <div class="day-card" id="day22-card">
-                    <div class="day-header">
-                        <h3>Day 22</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day22-status">Not Completed</div>
-                        <div class="unlock-status" id="day22-unlock">Locked</div>
-                        <p>Listening & Reading Final Practice</p>
-                        <a href="#" class="day-btn locked" id="day22-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day23-card">
-                    <div class="day-header">
-                        <h3>Day 23</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day23-status">Not Completed</div>
-                        <div class="unlock-status" id="day23-unlock">Locked</div>
-                        <p>Writing Tasks Refinement</p>
-                        <a href="#" class="day-btn locked" id="day23-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day24-card">
-                    <div class="day-header">
-                        <h3>Day 24</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day24-status">Not Completed</div>
-                        <div class="unlock-status" id="day24-unlock">Locked</div>
-                        <p>Speaking Final Preparation</p>
-                        <a href="#" class="day-btn locked" id="day24-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day25-card">
-                    <div class="day-header">
-                        <h3>Day 25</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day25-status">Not Completed</div>
-                        <div class="unlock-status" id="day25-unlock">Locked</div>
-                        <p>Full Mock Test</p>
-                        <a href="mock-test.html" class="day-btn locked" id="day25-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day26-card">
-                    <div class="day-header">
-                        <h3>Day 26</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day26-status">Not Completed</div>
-                        <div class="unlock-status" id="day26-unlock">Locked</div>
-                        <p>Error Analysis & Targeted Practice</p>
-                        <a href="#" class="day-btn locked" id="day26-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day27-card">
-                    <div class="day-header">
-                        <h3>Day 27</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day27-status">Not Completed</div>
-                        <div class="unlock-status" id="day27-unlock">Locked</div>
-                        <p>Final Review & Strategies</p>
-                        <a href="#" class="day-btn locked" id="day27-btn">Start</a>
-                    </div>
-                </div>
-                
-                <div class="day-card" id="day28-card">
-                    <div class="day-header">
-                        <h3>Day 28</h3>
-                    </div>
-                    <div class="day-content">
-                        <div class="day-status" id="day28-status">Not Completed</div>
-                        <div class="unlock-status" id="day28-unlock">Locked</div>
-                        <p>Test Day Preparation</p>
-                        <a href="#" class="day-btn locked" id="day28-btn">Start</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="resources-section">
-            <h2>Additional Resources</h2>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-header">Official IELTS Practice Tests</div>
-                    <div class="resource-content">
-                        <p>Access official practice materials from the test creators:</p>
-                        <ul>
-                            <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests" target="_blank">British Council Practice Tests</a></li>
-                            <li><a href="https://ielts.idp.com/prepare/ielts-preparation-practice-tests" target="_blank">IDP IELTS Practice Tests</a></li>
-                            <li><a href="https://www.ielts.org/for-test-takers/sample-test-questions" target="_blank">IELTS.org Sample Questions</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-header">YouTube Channels</div>
-                    <div class="resource-content">
-                        <p>Learn from these expert IELTS instructors:</p>
-                        <ul>
-                            <li><a href="https://www.youtube.com/user/ieltsliz" target="_blank">IELTS Liz</a></li>
-                            <li><a href="https://www.youtube.com/c/E2IELTS" target="_blank">E2 IELTS</a></li>
-                            <li><a href="https://www.youtube.com/c/FastrackEducation" target="_blank">Fastrack IELTS</a></li>
-                            <li><a href="https://www.youtube.com/c/IELTSAdvantage" target="_blank">IELTS Advantage</a></li>
-                            <li><a href="https://www.youtube.com/c/EnglishSpeakingSuccess" target="_blank">English Speaking Success</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-header">Vocabulary Resources</div>
-                    <div class="resource-content">
-                        <p>Build your IELTS vocabulary with these tools:</p>
-                        <ul>
-                            <li><a href="https://quizlet.com/subject/ielts-vocabulary/" target="_blank">Quizlet IELTS Vocabulary Sets</a></li>
-                            <li><a href="https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000" target="_blank">Oxford 3000 Word List</a></li>
-                            <li><a href="https://www.examenglish.com/vocabulary/academic_word_list.html" target="_blank">Academic Word List</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-header">Grammar Practice</div>
-                    <div class="resource-content">
-                        <p>Improve your grammar skills:</p>
-                        <ul>
-                            <li><a href="https://learnenglish.britishcouncil.org/grammar" target="_blank">British Council Grammar</a></li>
-                            <li><a href="https://www.bbc.co.uk/learningenglish/english/basic-grammar" target="_blank">BBC Learning English</a></li>
-                            <li><a href="https://www.perfect-english-grammar.com/" target="_blank">Perfect English Grammar</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div id="completion-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" id="close-modal">&times;</span>
-            <h2 id="modal-title">Day Completed!</h2>
-            <p id="modal-message">Congratulations on completing this day of your IELTS preparation!</p>
-            <div class="result-score">
-                <span id="day-score">4.5</span>/9
-            </div>
-            <div class="feedback-section">
-                <h3>Your Feedback:</h3>
-                <p id="day-feedback">You're making good progress! Focus on improving your listening skills by practicing with more difficult audio samples. Your reading comprehension is improving, but work on your time management. Keep practicing your speaking with varied vocabulary.</p>
-            </div>
-            <button class="day-btn" style="margin-top: 20px;" id="modal-continue">Continue</button>
-        </div>
-    </div>
-    
-    <footer>
-        <div class="container">
-            <p>Created with ❤️ for Raquel Mendes | IELTS Test Date: May 21, 2025</p>
-        </div>
-    </footer>
-    
-    <script>
-        // Tab functionality
-        function openWeek(evt, weekName) {
-            // Hide all tabcontent elements
-            var tabcontent = document.getElementsByClassName("tabcontent");
-            for (var i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-
-            // Remove "active" class from all tablinks
-            var tablinks = document.getElementsByClassName("tablinks");
-            for (var i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(weekName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+        .collapse-btn {
+            background-color: var(--light);
+            border: none;
+            color: var(--primary);
+            padding: 10px 15px;
+            text-align: left;
+            width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
         }
         
-        // Function to update progress
-        function updateProgress() {
-            // Check localStorage for completed days
-            const completedDays = [];
-            let totalCompleted = 0;
-            
-            for (let i = 1; i <= 28; i++) {
-                if (localStorage.getItem(`day${i}Completed`) === 'true') {
-                    completedDays.push(i);
-                    totalCompleted++;
-                    
-                    // Update the UI for completed days
-                    const dayCard = document.getElementById(`day${i}-card`);
-                    if (dayCard) {
-                        dayCard.classList.add('day-completed');
-                        document.getElementById(`day${i}-status`).textContent = 'Completed';
-                    }
-                }
-            }
-            
-            // Unlock the next day after the last completed day
-            if (completedDays.length > 0) {
-                const nextDay = Math.max(...completedDays) + 1;
-                if (nextDay <= 28) {
-                    const unlockElement = document.getElementById(`day${nextDay}-unlock`);
-                    const btnElement = document.getElementById(`day${nextDay}-btn`);
-                    
-                    if (unlockElement) {
-                        unlockElement.textContent = 'Available';
-                    }
-                    
-                    if (btnElement) {
-                        btnElement.classList.remove('locked');
-                    }
-                }
-            }
-            
-            const totalDays = 28;
-            const progressPercentage = (totalCompleted / totalDays) * 100;
-            document.getElementById('overall-progress').style.width = `${progressPercentage}%`;
-            document.getElementById('completed-days').textContent = totalCompleted;
-            document.getElementById('progress-percentage').textContent = `${Math.round(progressPercentage)}%`;
+        .collapse-btn::after {
+            content: "+";
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
         }
         
-        // Function to update countdown timer
-        function updateCountdown() {
-            const testDate = new Date('May 21, 2025 09:00:00').getTime();
-            const now = new Date().getTime();
-            const timeLeft = testDate - now;
-            
-            if (timeLeft < 0) {
-                document.getElementById('countdown-timer').textContent = "The test has passed!";
-                return;
-            }
-            
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            
-            document.getElementById('countdown-timer').textContent = `${days} Days : ${hours} Hours : ${minutes} Minutes`;
+        .collapse-btn.active::after {
+            content: "-";
         }
         
-        // Check URL parameters
-        function checkURLParams() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const completed = urlParams.get('completed');
-            
-            if (completed) {
-                localStorage.setItem(`day${completed}Completed`, 'true');
-                
-                // Show completion modal
-                document.getElementById('modal-title').textContent = `Day ${completed} Completed!`;
-                document.getElementById('modal-message').textContent = `Congratulations on completing Day ${completed} of your IELTS preparation!`;
-                
-                // Set a random band score between 5.0 and 6.5 for demonstration
-                const randomScore = (Math.random() * 1.5 + 5.0).toFixed(1);
-                document.getElementById('day-score').textContent = randomScore;
-                
-                // Show the modal
-                document.getElementById('completion-modal').style.display = 'block';
-            }
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
         }
         
-        // Update progress and countdown when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            updateProgress();
-            updateCountdown();
-            setInterval(updateCountdown, 60000); // Update every minute
-            checkURLParams();
-            
-            // Modal close button
-            document.getElementById('close-modal').addEventListener('click', function() {
-                document.getElementById('completion-modal').style.display = 'none';
-            });
-            
-            // Continue button
-            document.getElementById('modal-continue').addEventListener('click', function() {
-                document.getElementById('completion-modal').style.display = 'none';
-            });
-            
-            // By default, check if Day 1 is not completed, unlock it
-            if (localStorage.getItem('day1Completed') !== 'true') {
-                const day1Btn = document.getElementById('day1-btn');
-                if (day1Btn) {
-                    day1Btn.classList.remove('locked');
-                }
-            }
-        });
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            const modal = document.getElementById('completion-modal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-    </script>
-</body>
-</html>
+        .collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
