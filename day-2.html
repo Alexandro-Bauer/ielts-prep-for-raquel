@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: Speaking Introduction & Writing Task 1</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 30px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #1a252f;
+        }
+        
+        .day-detail {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .study-hour {
+            margin-bottom: 25px;
+            border-left: 4px solid var(--secondary);
+            padding-left: 15px;
+        }
+        
+        .hour-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .hour-content {
+            padding-left: 10px;
+        }
+        
+        .hour-content h4 {
+            margin: 15px 0 10px;
+            color: var(--primary);
+        }
+        
+        .hour-content p {
+            margin-bottom: 15px;
+        }
+        
+        .hour-content ul, .hour-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .hour-content li {
+            margin-bottom: 5px;
+        }
+        
+        .resources-list {
+            margin-top: 15px;
+        }
+        
+        .resources-list li {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .resource-box h4 {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        
+        .resource-box ul li {
+            margin-bottom: 8px;
+        }
+        
+        .resource-box a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .resource-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .exercise-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .assessment-section {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .assessment-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .completion-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        
+        .completion-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .timer-container {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .timer-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: var(--primary);
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .notes-section {
+            margin-top: 30px;
+        }
+        
+        .notes-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .notes-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .writing-input {
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            margin-top: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+        }
+        
+        .writing-sample {
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .feedback-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 0 0 5px 5px;
+            margin-top: 30px;
+        }
+        
+        .collapse-btn {
+            background-color: var(--light);
+            border: none;
+            color: var(--primary);
+            padding: 10px 15px;
+            text-align: left;
+            width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .collapse-btn::after {
+            content: "+";
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .collapse-btn.active::after {
+            content: "-";
+        }
+        
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        .result-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .result-score {
+            font-size: 3rem;
+            color: var(--primary);
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .sample-letter {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .day-detail {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Day 2: Speaking Introduction & Writing Task 1</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="timer-container">
+            <h3>Study Timer</h3>
+            <div class="timer-display" id="timer">03:00:00</div>
+            <div class="timer-controls">
+                <button class="timer-btn" id="start-timer">Start</button>
+                <button class="timer-btn" id="pause-timer">Pause</button>
+                <button class="timer-btn" id="reset-timer">Reset</button>
+            </div>
+        </div>
+        
+        <div class="day-detail">
+            <h2>Today's Study Plan</h2>
+            <p>Welcome to Day 2 of your IELTS preparation! Today we'll focus on introducing you to the Speaking section and the General Training Writing Task 1 (letter writing).</p>
+            
+            <div class="study-hour">
+                <h3 class="hour-title">Hour 1: Speaking Introduction</h3>
+                <div class="hour-content">
+                    <p>The IELTS Speaking test is a face-to-face interview with an examiner that lasts 11-14 minutes. It is divided into three parts and tests your ability to communicate effectively in English.</p>
+                    
+                    <div class="resource-box">
+                        <h4>IELTS Speaking Resources</h4>
+                        <p>Learn about the IELTS Speaking test format and preparation strategies:</p>
+                        <ul>
+                            <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/speaking" target="_blank">British Council - Speaking Preparation</a></li>
+                            <li><a href="https://www.ielts.org/for-test-takers/test-format/speaking" target="_blank">IELTS.org - Speaking Format</a></li>
+                            <li><a href="https://ieltsliz.com/ielts-speaking/" target="_blank">IELTS Liz - Speaking Tips and Lessons</a></li>
+                            <li><a href="https://ieltsonlinetests.com/ielts-speaking-test" target="_blank">IELTS Online Tests - Speaking Practice</a></li>
+                        </ul>
+                    </div>
+                    
+                    <h4>The Three Parts of IELTS Speaking:</h4>
+                    <ol>
+                        <li><strong>Part 1 (4-5 minutes):</strong> Introduction and questions on familiar topics (home, family, work/study, hobbies, etc.)</li>
+                        <li><strong>Part 2 (3-4 minutes):</strong> Individual long turn - You speak for 1-2 minutes on a given topic (with 1 minute preparation time)</li>
+                        <li><strong>Part 3 (4-5 minutes):</strong> Two-way discussion - More abstract questions related to the Part 2 topic</li>
+                    </ol>
+                    
+                    <h4>Key Speaking Skills:</h4>
+                    <ul>
+                        <li>Fluency and coherence</li>
+                        <li>Lexical resource (vocabulary)</li>
+                        <li>Grammatical range and accuracy</li>
+                        <li>Pronunciation</li>
+                    </ul>
+                    
+                    <div class="exercise-box">
+                        <h4>Practice Exercise: Speaking Part 1</h4>
+                        <p>Practice answering these common Part 1 questions. Record yourself if possible and listen back to evaluate your responses.</p>
+                        
+                        <h5>Topic: Home</h5>
+                        <ol>
+                            <li>Where do you live? (city/town/village)</li>
+                            <li>Do you live in a house or an apartment?</li>
+                            <li>What do you like about your home?</li>
+                            <li>Is there anything you would like to change about your home?</li>
+                        </ol>
+                        
+                        <h5>Topic: Work/Study</h5>
+                        <ol>
+                            <li>What do you do? (job/studies)</li>
+                            <li>Why did you choose this job/course?</li>
+                            <li>What do you enjoy most about your work/studies?</li>
+                            <li>What are your plans for the future?</li>
+                        </ol>
+                        
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">Speaking Tips</button>
+                        <div class="collapse-content">
+                            <h5>Tips for Speaking Part 1:</h5>
+                            <ul>
+                                <li>Give more than just one-word or very short answers (aim for 2-3 sentences)</li>
+                                <li>Use a variety of vocabulary and grammatical structures</li>
+                                <li>Be conversational and natural</li>
+                                <li>Don't memorize answers - the examiner can tell!</li>
+                                <li>If you don't understand the question, ask for clarification</li>
+                                <li>Speak clearly with good pronunciation</li>
+                            </ul>
+                            
+                            <h5>Sample Answer:</h5>
+                            <p><strong>Question: Where do you live?</strong></p>
+                            <p><em>"I live in Auckland, which is the largest city in New Zealand. It's located in the North Island and is known for its beautiful harbors and multicultural environment. I've been living there for about three years now, and I really enjoy the lifestyle."</em></p>
+                            
+                            <p><strong>Question: What do you do?</strong></p>
+                            <p><em>"I'm currently working as an administrative assistant for a marketing company. My main responsibilities include managing the office schedule, handling correspondence, and assisting with client inquiries. I've been in this position for almost two years, and I find it quite rewarding because I get to interact with many different people every day."</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="study-hour">
+                <h3 class="hour-title">Hour 2: General IELTS Writing Task 1 - Letter Writing</h3>
+                <div class="hour-content">
+                    <p>In General Training IELTS Writing Task 1, you need to write a letter of at least 150 words. You'll be given a situation and three points to include in your letter.</p>
+                    
+                    <div class="resource-box">
+                        <h4>IELTS General Writing Task 1 Resources</h4>
+                        <p>Learn about letter writing for IELTS General Training:</p>
+                        <ul>
+                            <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/general-training-writing-task-1" target="_blank">British Council - General Writing Task 1</a></li>
+                            <li><a href="https://ieltsliz.com/ielts-letter-writing-essential-tips/" target="_blank">IELTS Liz - Letter Writing Tips</a></li>
+                            <li><a href="https://www.ieltsadvantage.com/2015/03/05/ielts-general-task-1-letter-writing/" target="_blank">IELTS Advantage - Letter Writing Guide</a></li>
+                            <li><a href="https://ieltsonlinetests.com/ielts-general-writing-practice-test" target="_blank">IELTS Online Tests - Writing Practice</a></li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Types of IELTS Letters:</h4>
+                    <ol>
+                        <li><strong>Formal:</strong> To someone you don't know or in an official capacity</li>
+                        <li><strong>Semi-formal:</strong> To someone you know in an official capacity</li>
+                        <li><strong>Informal:</strong> To friends or family</li>
+                    </ol>
+                    
+                    <h4>Letter Structure:</h4>
+                    <ol>
+                        <li><strong>Opening:</strong> Address, date, and salutation (Dear...)</li>
+                        <li><strong>Introduction:</strong> Purpose of the letter</li>
+                        <li><strong>Body:</strong> Cover the three bullet points</li>
+                        <li><strong>Conclusion:</strong> Final remarks and closing (Yours faithfully/sincerely, etc.)</li>
+                    </ol>
+                    
+                    <h4>Appropriate Salutations and Closings:</h4>
+                    <ul>
+                        <li><strong>Formal:</strong> 
+                            <ul>
+                                <li>Start: "Dear Sir/Madam" (if you don't know the name) or "Dear Mr./Ms./Dr. Smith" (if you know the name)</li>
+                                <li>End: "Yours faithfully" (if you don't know the name) or "Yours sincerely" (if you know the name)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Informal:</strong>
+                            <ul>
+                                <li>Start: "Dear John," "Hi John," "Hello John,"</li>
+                                <li>End: "Best wishes," "Kind regards," "Love," "Cheers,"</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <div class="exercise-box">
+                        <h4>Practice Exercise: Writing a Formal Letter</h4>
+                        <p><strong>Task:</strong> You've recently moved to a new apartment and have several problems with it. Write a letter to your landlord. In your letter:</p>
+                        <ul>
+                            <li>Introduce yourself and state which apartment you're living in</li>
+                            <li>Explain the problems you're having</li>
+                            <li>Ask the landlord to resolve these issues</li>
+                        </ul>
+                        
+                        <p>Write at least 150 words. You do NOT need to write any addresses.</p>
+                        
+                        <textarea class="writing-input" placeholder="Write your letter here..." rows="12"></textarea>
+                        
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">View Sample Letter</button>
+                        <div class="collapse-content">
+                            <div class="sample-letter">
+                                <p>Dear Mr. Anderson,</p>
+                                <br>
+                                <p>I am writing regarding apartment 503, which I moved into on 15th June. My name is Sarah Wilson, and I have signed a one-year lease for this property.</p>
+                                <br>
+                                <p>I would like to bring to your attention several issues that require immediate attention. Firstly, the heating system is not functioning properly, making the apartment very cold in the evenings. Secondly, there is a water leak under the kitchen sink that has damaged the cabinet. Finally, the washing machine makes an extremely loud noise when operating, which disturbs me and potentially my neighbors.</p>
+                                <br>
+                                <p>I would appreciate it if you could arrange for these problems to be fixed as soon as possible. I am available most evenings after 6 PM and all day on weekends if maintenance staff need access to the apartment. Please contact me at 555-7890 to arrange a suitable time.</p>
+                                <br>
+                                <p>Thank you for your prompt attention to these matters.</p>
+                                <br>
+                                <p>Yours sincerely,</p>
+                                <br>
+                                <p>Sarah Wilson</p>
+                            </div>
+                            
+                            <h5>Notes on this letter:</h5>
+                            <ul>
+                                <li>This is a semi-formal letter as you know the name of the landlord</li>
+                                <li>The introduction clearly states who you are and which apartment you're writing about</li>
+                                <li>The three bullet points are addressed in separate sections</li>
+                                <li>The letter includes specific details about the problems</li>
+                                <li>The conclusion includes a clear request and contact information</li>
+                                <li>The letter is 174 words (above the minimum 150 words)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="study-hour">
+                <h3 class="hour-title">Hour 3: Vocabulary Building & Practice</h3>
+                <div class="hour-content">
+                    <p>In this hour, we'll focus on building your vocabulary for both speaking and writing, with particular emphasis on useful phrases for letter writing.</p>
+                    
+                    <h4>Useful Phrases for Letter Writing:</h4>
+                    
+                    <h5>Formal/Semi-formal Letters:</h5>
+                    <ul>
+                        <li><strong>Opening purpose:</strong>
+                            <ul>
+                                <li>I am writing to inquire about...</li>
+                                <li>I am writing with regard to...</li>
+                                <li>I am writing to express my concern about...</li>
+                                <li>I am writing to complain about...</li>
+                            </ul>
+                        </li>
+                        <li><strong>Making requests:</strong>
+                            <ul>
+                                <li>I would be grateful if you could...</li>
+                                <li>I would appreciate it if you could...</li>
+                                <li>Could you possibly...</li>
+                                <li>I was wondering if it would be possible to...</li>
+                            </ul>
+                        </li>
+                        <li><strong>Closing remarks:</strong>
+                            <ul>
+                                <li>Thank you for your assistance in this matter.</li>
+                                <li>I look forward to hearing from you soon.</li>
+                                <li>I would appreciate your prompt attention to this matter.</li>
+                                <li>Please do not hesitate to contact me if you require further information.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h5>Informal Letters:</h5>
+                    <ul>
+                        <li><strong>Opening purpose:</strong>
+                            <ul>
+                                <li>I'm writing to let you know that...</li>
+                                <li>Just a quick note about...</li>
+                                <li>I thought I'd drop you a line to...</li>
+                                <li>Hope you're well. I'm writing because...</li>
+                            </ul>
+                        </li>
+                        <li><strong>Making requests:</strong>
+                            <ul>
+                                <li>Could you possibly...</li>
+                                <li>I was hoping you might be able to...</li>
+                                <li>I'd really appreciate it if you could...</li>
+                                <li>Do you think you could...</li>
+                            </ul>
+                        </li>
+                        <li><strong>Closing remarks:</strong>
+                            <ul>
+                                <li>Thanks for your help.</li>
+                                <li>Looking forward to hearing from you.</li>
+                                <li>Let me know what you think.</li>
+                                <li>Write back soon!</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <div class="exercise-box">
+                        <h4>Practice Exercise: Writing an Informal Letter</h4>
+                        <p><strong>Task:</strong> You're going on vacation and need someone to look after your pet. Write a letter to a friend asking for help. In your letter:</p>
+                        <ul>
+                            <li>Explain your plans and when you'll be away</li>
+                            <li>Describe what looking after your pet involves</li>
+                            <li>Suggest how you could return the favor</li>
+                        </ul>
+                        
+                        <p>Write at least 150 words.</p>
+                        
+                        <textarea class="writing-input" placeholder="Write your letter here..." rows="12"></textarea>
+                        
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">View Sample Letter</button>
+                        <div class="collapse-content">
+                            <div class="sample-letter">
+                                <p>Hi Jamie,</p>
+                                <br>
+                                <p>Hope you're doing well! I'm writing to ask for a huge favor. I've just booked a holiday to Thailand from August 15th to 29th, and I'm looking for someone to take care of my cat, Luna, while I'm away.</p>
+                                <br>
+                                <p>Looking after Luna is fairly straightforward. She needs feeding twice a day - in the morning and evening. Her food is in the kitchen cupboard above the sink, and she only needs one sachet per meal. Her litter box would need cleaning every couple of days, and she'd love some playtime whenever you have a spare moment. She's very friendly and loves company!</p>
+                                <br>
+                                <p>I'd be happy to return the favor anytime you need it. I'm also bringing back some Thai souvenirs for you, and I'd be more than happy to treat you to dinner at that new Italian restaurant you mentioned when I get back.</p>
+                                <br>
+                                <p>Let me know if this would be possible. I could drop my spare keys off next week if you're available.</p>
+                                <br>
+                                <p>Thanks a million!</p>
+                                <br>
+                                <p>Cheers,</p>
+                                <p>Alex</p>
+                            </div>
+                            
+                            <h5>Notes on this letter:</h5>
+                            <ul>
+                                <li>This is an informal letter to a friend</li>
+                                <li>The tone is friendly and conversational</li>
+                                <li>All three bullet points are addressed in separate paragraphs</li>
+                                <li>Specific details are included about the pet care requirements</li>
+                                <li>The conclusion includes a clear follow-up action</li>
+                                <li>The letter is 174 words (above the minimum 150 words)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="assessment-section">
+                <h3 class="assessment-title">Day 2 Progress Assessment</h3>
+                <p>Complete this mini-test to evaluate your understanding of today's material.</p>
+                
+                <h4>Speaking Assessment</h4>
+                <p>Record yourself answering the following Part 1 question for 1-2 minutes:</p>
+                <div class="exercise-box">
+                    <p>"Tell me about your favorite season of the year. Why do you like it? What activities do you usually do during this season?"</p>
+                </div>
+                
+                <h4>Writing Assessment</h4>
+                <p>Write a letter in response to the following task:</p>
+                <div class="exercise-box">
+                    <p><strong>Task:</strong> You ordered an item online, but when it arrived, it was not what you expected. Write a letter to the customer service department. In your letter:</p>
+                    <ul>
+                        <li>Explain what you ordered and when</li>
+                        <li>Describe the problem with the item</li>
+                        <li>Tell them what you would like them to do</li>
+                    </ul>
+                    
+                    <p>Write at least 150 words.</p>
+                    
+                    <textarea class="writing-input" id="assessment-writing" placeholder="Write your letter here..." rows="12"></textarea>
+                </div>
+                
+                <h4>Vocabulary Assessment</h4>
+                <p>Match the following letter phrases with their appropriate letter type:</p>
+                <ol>
+                    <li>"I am writing to express my dissatisfaction with..."
+                        <ul class="options">
+                            <li><label><input type="radio" name="v1" value="a"> Formal letter</label></li>
+                            <li><label><input type="radio" name="v1" value="b"> Informal letter</label></li>
+                        </ul>
+                    </li>
+                    <li>"Just a quick note to say thanks for..."
+                        <ul class="options">
+                            <li><label><input type="radio" name="v2" value="a"> Formal letter</label></li>
+                            <li><label><input type="radio" name="v2" value="b"> Informal letter</label></li>
+                        </ul>
+                        </li>
+                    <li>"I look forward to your prompt response."
+                        <ul class="options">
+                            <li><label><input type="radio" name="v3" value="a"> Formal letter</label></li>
+                            <li><label><input type="radio" name="v3" value="b"> Informal letter</label></li>
+                        </ul>
+                    </li>
+                    <li>"Give my love to the kids!"
+                        <ul class="options">
+                            <li><label><input type="radio" name="v4" value="a"> Formal letter</label></li>
+                            <li><label><input type="radio" name="v4" value="b"> Informal letter</label></li>
+                        </ul>
+                    </li>
+                    <li>"I would be grateful if you could..."
+                        <ul class="options">
+                            <li><label><input type="radio" name="v5" value="a"> Formal letter</label></li>
+                            <li><label><input type="radio" name="v5" value="b"> Informal letter</label></li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <button class="collapse-btn" onclick="toggleCollapse(this)">View Answers</button>
+                <div class="collapse-content">
+                    <ol>
+                        <li>"I am writing to express my dissatisfaction with..." - <strong>Formal letter</strong></li>
+                        <li>"Just a quick note to say thanks for..." - <strong>Informal letter</strong></li>
+                        <li>"I look forward to your prompt response." - <strong>Formal letter</strong></li>
+                        <li>"Give my love to the kids!" - <strong>Informal letter</strong></li>
+                        <li>"I would be grateful if you could..." - <strong>Formal letter</strong></li>
+                    </ol>
+                </div>
+                
+                <div class="feedback-section">
+                    <h4>Self-Reflection:</h4>
+                    <p>What aspect of today's learning did you find most challenging?</p>
+                    <textarea rows="3" style="width: 100%; margin-top: 10px;"></textarea>
+                    
+                    <p style="margin-top: 15px;">What would you like to focus more on tomorrow?</p>
+                    <textarea rows="3" style="width: 100%; margin-top: 10px;"></textarea>
+                </div>
+                
+                <button class="completion-btn" id="submit-assessment">Submit Assessment & Complete Day 2</button>
+            </div>
+            
+            <div class="notes-section">
+                <h3 class="notes-title">Your Study Notes</h3>
+                <p>Use this space to take notes during your study session:</p>
+                <textarea class="notes-input" placeholder="Type your notes here..." id="study-notes"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div id="result-modal" class="result-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h2>Day 2 Assessment Results</h2>
+            <div class="result-score">
+                <span id="score-value">0</span>/10 correct
+            </div>
+            <div id="band-estimate"></div>
+            <div class="feedback-section">
+                <h3>Feedback:</h3>
+                <div id="feedback-text"></div>
+                <h4>Areas to Improve:</h4>
+                <ul id="improvement-areas"></ul>
+                <h4>Recommendations for Day 3:</h4>
+                <ul id="recommendations"></ul>
+            </div>
+            <a href="index.html?completed=2" class="completion-btn" id="continue-btn">Continue to Dashboard</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Created for Raquel Mendes | IELTS Test Date: May 21, 2025</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Timer functionality
+        let timerInterval;
+        let timeLeft = 3 * 60 * 60; // 3 hours in seconds
+        
+        function updateTimerDisplay() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            
+            document.getElementById('timer').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    alert('Study time is up! Please complete your assessment.');
+                }
+            }, 1000);
+        }
+        
+        function pauseTimer() {
+            clearInterval(timerInterval);
+        }
+        
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timeLeft = 3 * 60 * 60;
+            updateTimerDisplay();
+        }
+        
+        // Toggle collapse functionality
+        function toggleCollapse(button) {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+            } else {
+                content.classList.add('active');
+            }
+        }
+        
+        // Assessment submission
+        function submitAssessment() {
+            // Check if the writing task has been completed
+            const writingTask = document.getElementById('assessment-writing').value.trim();
+            const writingLength = writingTask.split(/\s+/).length; // Count words
+            
+            // Check vocabulary answers
+            const vocabAnswers = document.querySelectorAll('input[type="radio"]:checked').length;
+            
+            // Calculate basic score based on completion
+            let score = 0;
+            let feedbackText = "";
+            
+            // Evaluate writing task (very basic check)
+            if (writingLength >= 150) {
+                score += 5; // 5 points for completing the writing task with sufficient length
+                feedbackText += "Your writing task meets the minimum word count requirement. ";
+            } else if (writingLength > 0) {
+                score += Math.floor(writingLength / 30); // Partial credit based on length
+                feedbackText += "Your writing task is shorter than the required 150 words. ";
+            } else {
+                feedbackText += "You did not attempt the writing task. ";
+            }
+            
+            // Evaluate vocabulary quiz
+            score += vocabAnswers; // 1 point for each answered question (max 5)
+            
+            // Calculate percentage
+            const percentage = (score / 10) * 100;
+            
+            // Display the score
+            document.getElementById('score-value').textContent = score;
+            
+            // Estimate band score
+            let bandEstimate;
+            if (percentage >= 80) bandEstimate = "6.0-6.5";
+            else if (percentage >= 60) bandEstimate = "5.5-6.0";
+            else if (percentage >= 40) bandEstimate = "5.0-5.5";
+            else bandEstimate = "4.0-4.5";
+            
+            document.getElementById('band-estimate').innerHTML = `<p>Estimated Band Score: <strong>${bandEstimate}</strong></p>`;
+            
+            // Generate more detailed feedback
+            if (writingLength >= 150) {
+                feedbackText += "You've done well to write a complete letter. ";
+            }
+            
+            if (vocabAnswers >= 4) {
+                feedbackText += "You have a good understanding of formal and informal letter phrases. ";
+            } else if (vocabAnswers > 0) {
+                feedbackText += "You need more practice with formal and informal language. ";
+            } else {
+                feedbackText += "Make sure to practice distinguishing between formal and informal language. ";
+            }
+            
+            document.getElementById('feedback-text').textContent = feedbackText;
+            
+            // Generate improvement areas
+            const improvementAreas = [];
+            const recommendations = [];
+            
+            if (writingLength < 150) {
+                improvementAreas.push("Work on writing at least 150 words for Task 1 to meet the requirement.");
+                recommendations.push("Practice writing more complete letters with proper structure.");
+            }
+            
+            if (vocabAnswers < 5) {
+                improvementAreas.push("Practice distinguishing between formal and informal language.");
+                recommendations.push("Study and memorize more phrases for different letter types.");
+            }
+            
+            // Add general improvement areas
+            improvementAreas.push("Focus on developing speaking answers beyond basic responses.");
+            improvementAreas.push("Practice organizing letters with clear paragraphs for each bullet point.");
+            
+            // Add general recommendations
+            recommendations.push("Continue practicing letter writing using the templates provided.");
+            recommendations.push("Record yourself speaking to improve fluency and pronunciation.");
+            recommendations.push("Expand your vocabulary for both writing and speaking.");
+            
+            // Display improvement areas
+            const improvementList = document.getElementById('improvement-areas');
+            improvementList.innerHTML = '';
+            improvementAreas.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                improvementList.appendChild(li);
+            });
+            
+            // Display recommendations
+            const recommendationsList = document.getElementById('recommendations');
+            recommendationsList.innerHTML = '';
+            recommendations.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                recommendationsList.appendChild(li);
+            });
+            
+            // Show the modal
+            document.getElementById('result-modal').style.display = 'block';
+            
+            // Mark day as completed
+            localStorage.setItem('day2Completed', 'true');
+        }
+        
+        // Save notes to local storage
+        function saveNotes() {
+            const notesInput = document.getElementById('study-notes');
+            localStorage.setItem('day2Notes', notesInput.value);
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Timer controls
+            document.getElementById('start-timer').addEventListener('click', startTimer);
+            document.getElementById('pause-timer').addEventListener('click', pauseTimer);
+            document.getElementById('reset-timer').addEventListener('click', resetTimer);
+            
+            // Assessment submission
+            document.getElementById('submit-assessment').addEventListener('click', submitAssessment);
+            
+            // Modal close button
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('result-modal').style.display = 'none';
+                window.location.href = 'index.html?completed=2'; // Redirect with completed parameter
+            });
+            
+            // Continue button
+            document.getElementById('continue-btn').addEventListener('click', function() {
+                window.location.href = 'index.html?completed=2'; // Redirect with completed parameter
+            });
+            
+            // Load saved notes if any
+            const notesInput = document.getElementById('study-notes');
+            notesInput.value = localStorage.getItem('day2Notes') || '';
+            
+            // Save notes on input
+            notesInput.addEventListener('input', saveNotes);
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('result-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
