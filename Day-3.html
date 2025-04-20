@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3: Listening Section Types & Reading Strategies</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 30px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #1a252f;
+        }
+        
+        .day-detail {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .study-hour {
+            margin-bottom: 25px;
+            border-left: 4px solid var(--secondary);
+            padding-left: 15px;
+        }
+        
+        .hour-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .hour-content {
+            padding-left: 10px;
+        }
+        
+        .hour-content h4 {
+            margin: 15px 0 10px;
+            color: var(--primary);
+        }
+        
+        .hour-content p {
+            margin-bottom: 15px;
+        }
+        
+        .hour-content ul, .hour-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .hour-content li {
+            margin-bottom: 5px;
+        }
+        
+        .resources-list {
+            margin-top: 15px;
+        }
+        
+        .resources-list li {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .resource-box h4 {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        
+        .resource-box ul li {
+            margin-bottom: 8px;
+        }
+        
+        .resource-box a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .resource-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .exercise-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .assessment-section {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .assessment-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .completion-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        
+        .completion-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .timer-container {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .timer-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: var(--primary);
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .notes-section {
+            margin-top: 30px;
+        }
+        
+        .notes-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .notes-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .writing-input {
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            margin-top: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+        }
+        
+        .example-passage {
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .feedback-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 0 0 5px 5px;
+            margin-top: 30px;
+        }
+        
+        .collapse-btn {
+            background-color: var(--light);
+            border: none;
+            color: var(--primary);
+            padding: 10px 15px;
+            text-align: left;
+            width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .collapse-btn::after {
+            content: "+";
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .collapse-btn.active::after {
+            content: "-";
+        }
+        
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        .result-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .result-score {
+            font-size: 3rem;
+            color: var(--primary);
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .day-detail {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Day 3: Listening Section Types & Reading Strategies</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="timer-container">
+            <h3>Study Timer</h3>
+            <div class="timer-display" id="timer">03:00:00</div>
+            <div class="timer-controls">
+                <button class="timer-btn" id="start-timer">Start</button>
+                <button class="timer-btn" id="pause-timer">Pause</button>
+                <button class="timer-btn" id="reset-timer">Reset</button>
+            </div>
+        </div>
+        
+        <div class="day-detail">
+            <h2>Today's Study Plan</h2>
+            <p>Welcome to Day 3 of your IELTS preparation! Today we'll dive deeper into the different sections of the IELTS Listening test and explore advanced reading strategies.</p>
+            
+            <div class="study-hour">
+                <h3 class="hour-title">Hour 1: IELTS Listening Section Types</h3>
+                <div class="hour-content">
+                    <p>The IELTS Listening test consists of four sections, each with a different focus and increasing difficulty. Let's look at each in detail:</p>
+                    
+                    <div class="resource-box">
+                        <h4>IELTS Listening Resources</h4>
+                        <p>Access these reliable resources to learn more about the IELTS Listening test:</p>
+                        <ul>
+                            <li><a href="https://www.ielts.org/for-test-takers/test-format/listening" target="_blank">IELTS.org - Listening Format</a></li>
+                            <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/listening" target="_blank">British Council - Listening Preparation</a></li>
+                            <li><a href="https://ieltsliz.com/ielts-listening-section-1/" target="_blank">IELTS Liz - Listening Section Guides</a></li>
+                            <li><a href="https://ieltsonlinetests.com/ielts-listening-practice-test" target="_blank">IELTS Online Tests - Listening Practice</a></li>
+                        </ul>
+                    </div>
+                    
+                    <h4>The Four Listening Sections:</h4>
+                    
+                    <h5>Section 1:</h5>
+                    <ul>
+                        <li><strong>Format:</strong> A conversation between two people in an everyday social context</li>
+                        <li><strong>Common scenarios:</strong> Accommodation inquiries, job applications, service inquiries</li>
+                        <li><strong>Question types:</strong> Form completion, multiple choice, matching</li>
+                        <li><strong>Focus on:</strong> Personal information, numbers, dates, times, locations</li>
+                        <li><strong>Difficulty level:</strong> Easiest of the four sections</li>
+                    </ul>
+                    
+                    <h5>Section 2:</h5>
+                    <ul>
+                        <li><strong>Format:</strong> A monologue set in an everyday social context</li>
+                        <li><strong>Common scenarios:</strong> Tour guide information, facility descriptions, event announcements</li>
+                        <li><strong>Question types:</strong> Multiple choice, map/plan/diagram labeling, form completion</li>
+                        <li><strong>Focus on:</strong> Factual information about places, events, or services</li>
+                        <li><strong>Difficulty level:</strong> Moderate</li>
+                    </ul>
+                    
+                    <h5>Section 3:</h5>
+                    <ul>
+                        <li><strong>Format:</strong> A conversation between up to four people in an educational or training context</li>
+                        <li><strong>Common scenarios:</strong> University tutorials, project discussions, academic advisement</li>
+                        <li><strong>Question types:</strong> Multiple choice, matching, note completion</li>
+                        <li><strong>Focus on:</strong> Educational topics, academic discussions, student experiences</li>
+                        <li><strong>Difficulty level:</strong> Challenging</li>
+                    </ul>
+                    
+                    <h5>Section 4:</h5>
+                    <ul>
+                        <li><strong>Format:</strong> A monologue on an academic subject</li>
+                        <li><strong>Common scenarios:</strong> University lectures, academic presentations</li>
+                        <li><strong>Question types:</strong> Sentence completion, multiple choice, summary completion</li>
+                        <li><strong>Focus on:</strong> Abstract academic concepts, detailed information</li>
+                        <li><strong>Difficulty level:</strong> Most difficult section</li>
+                    </ul>
+                    
+                    <div class="exercise-box">
+                        <h4>Exercise: Identifying Listening Section Types</h4>
+                        <p>Read the following descriptions and identify which section of the IELTS Listening test they belong to:</p>
+                        
+                        <ol>
+                            <li>A student discussing his research project with his professor
+                                <ul class="options">
+                                    <li><label><input type="radio" name="ls1" value="a"> Section 1</label></li>
+                                    <li><label><input type="radio" name="ls1" value="b"> Section 2</label></li>
+                                    <li><label><input type="radio" name="ls1" value="c"> Section 3</label></li>
+                                    <li><label><input type="radio" name="ls1" value="d"> Section 4</label></li>
+                                </ul>
+                            </li>
+                            
+                            <li>A lecture on the migration patterns of birds
+                                <ul class="options">
+                                    <li><label><input type="radio" name="ls2" value="a"> Section 1</label></li>
+                                    <li><label><input type="radio" name="ls2" value="b"> Section 2</label></li>
+                                    <li><label><input type="radio" name="ls2" value="c"> Section 3</label></li>
+                                    <li><label><input type="radio" name="ls2" value="d"> Section 4</label></li>
+                                </ul>
+                            </li>
+                            
+                            <li>A tour guide describing the facilities available at a museum
+                                <ul class="options">
+                                    <li><label><input type="radio" name="ls3" value="a"> Section 1</label></li>
+                                    <li><label><input type="radio" name="ls3" value="b"> Section 2</label></li>
+                                    <li><label><input type="radio" name="ls3" value="c"> Section 3</label></li>
+                                    <li><label><input type="radio" name="ls3" value="d"> Section 4</label></li>
+                                </ul>
+                            </li>
+                            
+                            <li>A woman calling to book accommodation at a hotel
+                                <ul class="options">
+                                    <li><label><input type="radio" name="ls4" value="a"> Section 1</label></li>
+                                    <li><label><input type="radio" name="ls4" value="b"> Section 2</label></li>
+                                    <li><label><input type="radio" name="ls4" value="c"> Section 3</label></li>
+                                    <li><label><input type="radio" name="ls4" value="d"> Section 4</label></li>
+                                </ul>
+                            </li>
+                            
+                            <li>Three students discussing their assignment with each other
+                                <ul class="options">
+                                    <li><label><input type="radio" name="ls5" value="a"> Section 1</label></li>
+                                    <li><label><input type="radio" name="ls5" value="b"> Section 2</label></li>
+                                    <li><label><input type="radio" name="ls5" value="c"> Section 3</label></li>
+                                    <li><label><input type="radio" name="ls5" value="d"> Section 4</label></li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">View Answers</button>
