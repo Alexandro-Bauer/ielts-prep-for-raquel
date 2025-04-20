@@ -1,0 +1,923 @@
+.collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 0 0 5px 5px;
+            margin-top: 30px;
+        }
+        
+        .test-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .test-nav-btn {
+            padding: 8px 15px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .test-nav-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .test-nav-btn.disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        
+        .tab-btn.active {
+            background-color: white;
+            border-bottom: 1px solid white;
+            margin-bottom: -1px;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            background-color: white;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .test-section {
+                padding: 15px;
+            }
+            
+            .timer-box {
+                padding: 10px;
+            }
+            
+            .timer-display {
+                font-size: 1.5rem;
+            }
+            
+            .test-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>IELTS Mock Test</h1>
+            <p>Full Practice Test (2 hours 45 minutes)</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="timer-box">
+            <h3>Time Remaining</h3>
+            <div class="timer-display" id="timer">02:45:00</div>
+        </div>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <p>This is a full IELTS practice test that includes all four sections: Listening, Reading, Writing, and Speaking. Complete each section within the allocated time for the most realistic practice experience.</p>
+            <p>The total test time is 2 hours and 45 minutes, broken down as follows:</p>
+            <ul>
+                <li><strong>Listening:</strong> 40 minutes (30 minutes for the recording + 10 minutes to transfer answers)</li>
+                <li><strong>Reading:</strong> 60 minutes</li>
+                <li><strong>Writing:</strong> 60 minutes</li>
+                <li><strong>Speaking:</strong> approximately 11-14 minutes (you can record yourself for this section)</li>
+            </ul>
+        </div>
+        
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab(event, 'listening-tab')">Listening</button>
+                <button class="tab-btn" onclick="openTab(event, 'reading-tab')">Reading</button>
+                <button class="tab-btn" onclick="openTab(event, 'writing-tab')">Writing</button>
+                <button class="tab-btn" onclick="openTab(event, 'speaking-tab')">Speaking</button>
+            </div>
+            
+            <!-- Listening Tab Content -->
+            <div id="listening-tab" class="tab-content active">
+                <div class="test-section">
+                    <h2>Listening Test (40 minutes)</h2>
+                    
+                    <div class="resource-box">
+                        <h4>Listening Test Resources</h4>
+                        <p>For this mock test, use one of these official IELTS listening practice tests:</p>
+                        <ul>
+                            <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/listening" target="_blank">British Council - Free Listening Practice Tests</a></li>
+                            <li><a href="https://www.ielts.org/for-test-takers/sample-test-questions" target="_blank">IELTS.org - Sample Listening Questions</a></li>
+                            <li><a href="https://ieltsonlinetests.com/ielts-listening-practice-test" target="_blank">IELTS Online Tests - Listening Practice</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=2RRB5HCB7w0" target="_blank">E2 IELTS - YouTube Listening Practice Test</a></li>
+                        </ul>
+                        <p>Alternatively, you can use the offline practice questions below.</p>
+                    </div>
+                    
+                    <div class="offline-test">
+                        <p class="offline-test-intro">The following questions are based on a typical IELTS Listening test. If you're unable to access the online resources, you can practice with these questions.</p>
+                        
+                        <h3>Section 1: Conversation between a caller and a hotel receptionist</h3>
+                        <p>Questions 1-5: Complete the form below. Write NO MORE THAN THREE WORDS AND/OR A NUMBER for each answer.</p>
+                        
+                        <div class="question-form">
+                            <h4>Hotel Reservation Form</h4>
+                            
+                            <div class="question">
+                                <p>1. Guest Name: <input type="text" class="text-input"></p>
+                            </div>
+                            
+                            <div class="question">
+                                <p>2. Length of stay: <input type="text" class="text-input"> nights</p>
+                            </div>
+                            
+                            <div class="question">
+                                <p>3. Room type requested: <input type="text" class="text-input"></p>
+                            </div>
+                            
+                            <div class="question">
+                                <p>4. Special request: <input type="text" class="text-input"></p>
+                            </div>
+                            
+                            <div class="question">
+                                <p>5. Confirmation number: <input type="text" class="text-input"></p>
+                            </div>
+                        </div>
+                        
+                        <h3>Section 2: Monologue about a community event</h3>
+                        <p>Questions 6-10: Choose the correct letter, A, B, or C.</p>
+                        
+                        <div class="question">
+                            <p>6. The community festival will take place:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q6" value="A"> A. Next weekend</label>
+                                <label><input type="radio" name="q6" value="B"> B. Next month</label>
+                                <label><input type="radio" name="q6" value="C"> C. Next summer</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>7. The main purpose of the festival is to:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q7" value="A"> A. Raise money for charity</label>
+                                <label><input type="radio" name="q7" value="B"> B. Celebrate local culture</label>
+                                <label><input type="radio" name="q7" value="C"> C. Promote tourism</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>8. The festival will include:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q8" value="A"> A. A talent competition</label>
+                                <label><input type="radio" name="q8" value="B"> B. A food market</label>
+                                <label><input type="radio" name="q8" value="C"> C. A sports tournament</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>9. Volunteers are needed to help with:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q9" value="A"> A. Setting up stalls</label>
+                                <label><input type="radio" name="q9" value="B"> B. Selling tickets</label>
+                                <label><input type="radio" name="q9" value="C"> C. Directing traffic</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>10. To volunteer, people should:</p>
+                            <div class="options">
+                                <label><input type="radio" name="q10" value="A"> A. Contact the community center</label>
+                                <label><input type="radio" name="q10" value="B"> B. Visit the festival website</label>
+                                <label><input type="radio" name="q10" value="C"> C. Attend a planning meeting</label>
+                            </div>
+                        </div>
+                        
+                        <h3>Sections 3 & 4: More questions available in the online resources</h3>
+                        <p>For a complete practice test, please use one of the online resources listed above. These will include Section 3 (conversation between students) and Section 4 (academic lecture).</p>
+                    </div>
+                </div>
+                
+                <div class="test-nav">
+                    <button class="test-nav-btn disabled">Previous</button>
+                    <button class="test-nav-btn" onclick="openTab(null, 'reading-tab')">Next: Reading Test</button>
+                </div>
+            </div>
+            
+            <!-- Reading Tab Content -->
+            <div id="reading-tab" class="tab-content">
+                <div class="test-section">
+                    <h2>Reading Test (60 minutes)</h2>
+                    
+                    <div class="resource-box">
+                        <h4>Reading Test Resources</h4>
+                        <p>For this mock test, use one of these official IELTS reading practice tests:</p>
+                        <ul>
+                            <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests/reading" target="_blank">British Council - Free Reading Practice Tests</a></li>
+                            <li><a href="https://www.ielts.org/for-test-takers/sample-test-questions" target="_blank">IELTS.org - Sample Reading Questions</a></li>
+                            <li><a href="https://ieltsonlinetests.com/ielts-reading-practice-test" target="_blank">IELTS Online Tests - Reading Practice</a></li>
+                        </ul>
+                        <p>Alternatively, you can use the offline practice questions below.</p>
+                    </div>
+                    
+                    <div class="offline-test">
+                        <p class="offline-test-intro">The following is a sample reading passage with questions. For a full test, please use one of the resources above.</p>
+                        
+                        <h3>Passage 1: The History of Tea</h3>
+                        
+                        <p>Tea is one of the world's oldest and most popular beverages, with origins tracing back to ancient China more than 5,000 years ago. According to legend, tea was discovered in 2737 BCE by the Chinese Emperor Shen Nong, who was boiling water when leaves from a nearby tea tree blew into his pot. The emperor was intrigued by the pleasant aroma and decided to taste the infusion, thus discovering tea's refreshing properties.</p>
+
+                        <p>By the Tang Dynasty (618-907 CE), tea had become China's national beverage and was considered essential to daily life. It was during this period that Lu Yu wrote the first definitive book on tea, "The Classic of Tea," which detailed cultivation methods, brewing techniques, and the cultural significance of tea in Chinese society. The Tang Dynasty also saw the development of tea as an item of trade, transported along the Silk Road to Tibet, the Middle East, and eventually to other parts of the world.</p>
+
+                        <p>Tea arrived in Japan around the 6th century, brought by Buddhist monks who had traveled to China to study. The Japanese embraced tea culture enthusiastically, developing their own unique traditions, including the elaborate Japanese tea ceremony (chanoyu), which was perfected in the 16th century by the tea master Sen no Rikyū. The ceremony emphasizes spiritual and aesthetic principles, viewing tea preparation as a meditative practice embodying harmony, respect, purity, and tranquility.</p>
+
+                        <p>Europeans first encountered tea in the 16th century, with Portuguese merchants and missionaries bringing back accounts of the exotic beverage from their travels in the East. However, it wasn't until the 17th century that tea became popular in Europe, particularly in the Netherlands and England. The Dutch East India Company began importing tea to Europe in 1610, but it remained a luxury item due to its high cost, consumed primarily by the aristocracy and the wealthy merchant class.</p>
+
+                        <p>Tea's journey to England is closely tied to Catherine of Braganza, a Portuguese princess who married King Charles II in 1662. Catherine was an avid tea drinker and introduced the beverage to the English court, making it fashionable among the nobility. By the 18th century, tea had become increasingly accessible to the middle classes, and tea houses began to spring up across London, serving as social hubs where people gathered to drink tea, exchange news, and conduct business.</p>
+
+                        <p>The British East India Company, which had obtained a monopoly on tea imports to Britain, played a crucial role in expanding the tea trade. As demand for tea grew in Britain, the Company began to cultivate tea in India to reduce reliance on Chinese imports. The discovery that tea plants were native to Assam in India led to the establishment of tea plantations throughout the region in the 1830s. Later, tea cultivation expanded to Ceylon (now Sri Lanka) and parts of Africa, diversifying production beyond China.</p>
+
+                        <p>The high taxes imposed on tea by the British government led to a thriving smuggling trade in the 18th century and played a role in the American Revolution. The infamous Boston Tea Party of 1773, in which American colonists dumped British tea into Boston Harbor to protest taxation without representation, was a pivotal event leading to American independence. Following these events, coffee temporarily surpassed tea as the preferred beverage in America.</p>
+
+                        <p>Today, tea is the most widely consumed beverage in the world after water, with thousands of varieties available. Its global journey from a medicinal herb in ancient China to a staple beverage across cultures demonstrates tea's remarkable adaptability and enduring appeal. Each region has developed its own traditions around tea preparation and consumption, reflecting local tastes, customs, and values. Whether served hot or cold, plain or sweetened, in elaborate ceremonies or from disposable cups, tea continues to bring people together in a shared experience that transcends cultural boundaries.</p>
+                        
+                        <p>Questions 1-5: Choose the correct letter, A, B, or C.</p>
+                        
+                        <div class="question">
+                            <p>1. According to the passage, tea was discovered:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r1" value="A"> A. By Buddhist monks</label>
+                                <label><input type="radio" name="r1" value="B"> B. By accident when leaves fell into boiling water</label>
+                                <label><input type="radio" name="r1" value="C"> C. Along the Silk Road trading route</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>2. The first book entirely devoted to tea was written during the:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r2" value="A"> A. Tang Dynasty</label>
+                                <label><input type="radio" name="r2" value="B"> B. 16th century</label>
+                                <label><input type="radio" name="r2" value="C"> C. 17th century</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>3. The Japanese tea ceremony emphasizes:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r3" value="A"> A. Speed and efficiency</label>
+                                <label><input type="radio" name="r3" value="B"> B. Social status and wealth</label>
+                                <label><input type="radio" name="r3" value="C"> C. Spiritual and aesthetic principles</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>4. Tea became popular in England largely because:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r4" value="A"> A. It was promoted by the British East India Company</label>
+                                <label><input type="radio" name="r4" value="B"> B. Queen Catherine made it fashionable at court</label>
+                                <label><input type="radio" name="r4" value="C"> C. It was cheaper than coffee or alcohol</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">
+                            <p>5. The Boston Tea Party was significant because it:</p>
+                            <div class="options">
+                                <label><input type="radio" name="r5" value="A"> A. Led to a decline in tea consumption in America</label>
+                                <label><input type="radio" name="r5" value="B"> B. Ended the British monopoly on tea production</label>
+                                <label><input type="radio" name="r5" value="C"> C. Was a pivotal event leading to American independence</label>
+                            </div>
+                        </div>
+                        
+                        <p>Questions 6-10: Complete the summary using the list of words below.</p>
+                        <p>Tea was originally from <input type="text" class="text-input" placeholder="6"> and spread to Japan with <input type="text" class="text-input" placeholder="7">. It later reached Europe through <input type="text" class="text-input" placeholder="8"> merchants in the 16th century. Initially, tea was mainly consumed by the <input type="text" class="text-input" placeholder="9"> due to its high cost. Today, tea is the second most popular beverage in the world after <input type="text" class="text-input" placeholder="10">.</p>
+                        
+                        <p><strong>Word list:</strong> China, Japan, Buddhist monks, traders, sailors, Portuguese, Dutch, nobility, middle class, workers, coffee, water, wine</p>
+                    </div>
+                </div>
+                
+                <div class="test-nav">
+                    <button class="test-nav-btn" onclick="openTab(null, 'listening-tab')">Previous: Listening Test</button>
+                    <button class="test-nav-btn" onclick="openTab(null, 'writing-tab')">Next: Writing Test</button>
+                </div>
+            </div>
+            
+            <!-- Writing Tab Content -->
+            <div id="writing-tab" class="tab-content">
+                <div class="test-section">
+                    <h2>Writing Test (60 minutes)</h2>
+                    
+                    <div class="resource-box">
+                        <h4>Writing Test Information</h4>
+                        <p>The writing test consists of two tasks:</p>
+                        <ul>
+                            <li><strong>Task 1 (20 minutes):</strong> Write a letter (General Training) or describe visual information (Academic)</li>
+                            <li><strong>Task 2 (40 minutes):</strong> Write an essay on a given topic</li>
+                        </ul>
+                        <p>Complete both tasks within the 60-minute time limit. Task 2 is worth more marks than Task 1.</p>
+                    </div>
+                    
+                    <div class="offline-test">
+                        <h3>Writing Task 1 (General Training)</h3>
+                        <p>You should spend about 20 minutes on this task.</p>
+                        
+                        <div class="question">
+                            <p><strong>You recently stayed at a hotel and were very satisfied with the service. Write a letter to the hotel manager.</strong></p>
+                            <p>In your letter:</p>
+                            <ul>
+                                <li>Say when you stayed at the hotel</li>
+                                <li>Describe what you particularly liked about the hotel</li>
+                                <li>Explain why you would recommend this hotel to others</li>
+                            </ul>
+                            <p>Write at least 150 words.</p>
+                            
+                            <textarea class="writing-input" rows="12" placeholder="Write your letter here..."></textarea>
+                        </div>
+                        
+                        <h3>Writing Task 2</h3>
+                        <p>You should spend about 40 minutes on this task.</p>
+                        
+                        <div class="question">
+                            <p><strong>Many people believe that international tourism is harmful to the environment and local cultures. To what extent do you agree or disagree?</strong></p>
+                            <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+                            <p>Write at least 250 words.</p>
+                            
+                            <textarea class="writing-input" rows="18" placeholder="Write your essay here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-nav">
+                    <button class="test-nav-btn" onclick="openTab(null, 'reading-tab')">Previous: Reading Test</button>
+                    <button class="test-nav-btn" onclick="openTab(null, 'speaking-tab')">Next: Speaking Test</button>
+                </div>
+            </div>
+            
+            <!-- Speaking Tab Content -->
+            <div id="speaking-tab" class="tab-content">
+                <div class="test-section">
+                    <h2>Speaking Test (11-14 minutes)</h2>
+                    
+                    <div class="resource-box">
+                        <h4>Speaking Test Information</h4>
+                        <p>The speaking test consists of three parts:</p>
+                        <ul>
+                            <li><strong>Part 1 (4-5 minutes):</strong> Introduction and questions on familiar topics</li>
+                            <li><strong>Part 2 (3-4 minutes):</strong> Individual long turn (1-2 minutes) with 1 minute preparation</li>
+                            <li><strong>Part 3 (4-5 minutes):</strong> Two-way discussion on more abstract aspects of Part 2 topic</li>
+                        </ul>
+                        <p>For this practice test, you can record yourself responding to the questions and then review your answers.</p>
+                    </div>
+                    
+                    <div class="offline-test">
+                        <h3>Part 1: Introduction and general questions</h3>
+                        <p>Record yourself answering these questions as if you were speaking to an examiner:</p>
+                        
+                        <div class="question">
+                            <p>1. Can you tell me your full name, please?</p>
+                            <p>2. What should I call you?</p>
+                            <p>3. Can I see your identification, please?</p>
+                            
+                            <p><strong>Topic: Home</strong></p>
+                            <p>4. Where do you live?</p>
+                            <p>5. Do you live in a house or an apartment?</p>
+                            <p>6. What do you like about living there?</p>
+                            <p>7. Would you like to move to a different home in the future?</p>
+                            
+                            <p><strong>Topic: Free Time</strong></p>
+                            <p>8. What do you enjoy doing in your free time?</p>
+                            <p>9. Do you have enough free time?</p>
+                            <p>10. What activities would you like to try in the future?</p>
+                        </div>
+                        
+                        <h3>Part 2: Individual long turn</h3>
+                        <p>You will have 1 minute to prepare your answer, and then you should speak for 1-2 minutes on this topic:</p>
+                        
+                        <div class="question">
+                            <div style="border: 1px solid #ddd; padding: 15px; background-color: #f9f9f9;">
+                                <p>Describe a skill you would like to learn.</p>
+                                <p>You should say:</p>
+                                <ul>
+                                    <li>what the skill is</li>
+                                    <li>why you want to learn it</li>
+                                    <li>how you would learn it</li>
+                                </ul>
+                                <p>and explain how this skill would be useful in your life.</p>
+                            </div>
+                        </div>
+                        
+                        <h3>Part 3: Two-way discussion</h3>
+                        <p>Record yourself answering these follow-up questions related to skills and learning:</p>
+                        
+                        <div class="question">
+                            <p>1. What skills do you think are most important for people to learn in today's world?</p>
+                            <p>2. Do you think the skills people need now are different from those needed in the past? Why?</p>
+                            <p>3. How has technology changed the way people learn new skills?</p>
+                            <p>4. Do you think schools should focus more on practical skills or academic knowledge?</p>
+                            <p>5. What's the best way for adults to continue learning throughout their lives?</p>
+                            <p>6. How important is it for older people to learn new skills?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-nav">
+                    <button class="test-nav-btn" onclick="openTab(null, 'writing-tab')">Previous: Writing Test</button>
+                    <button class="test-nav-btn" id="submit-test">Submit Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="results-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>Your Test Results</h2>
+            
+            <div class="result-box">
+                <p>Estimated Band Score:</p>
+                <div class="band-score"><span id="band-score">5.5</span></div>
+                <p id="attempt-text">This is an estimated score based on your responses.</p>
+            </div>
+            
+            <div class="feedback-section">
+                <h3>Feedback:</h3>
+                <p>Here's a breakdown of your estimated scores by section:</p>
+                <ul>
+                    <li><strong>Listening:</strong> <span id="listening-score">5.5</span></li>
+                    <li><strong>Reading:</strong> <span id="reading-score">5.0</span></li>
+                    <li><strong>Writing:</strong> <span id="writing-score">5.0</span></li>
+                    <li><strong>Speaking:</strong> <span id="speaking-score">5.5</span></li>
+                </ul>
+                
+                <h4>Areas to Improve:</h4>
+                <ul id="feedback-list">
+                    <li>Practice more with advanced listening materials, focusing on Sections 3 and 4.</li>
+                    <li>Work on reading speed and skimming/scanning techniques.</li>
+                    <li>Develop better paragraph structure in your writing, especially in Task 2.</li>
+                    <li>Expand your vocabulary for more precise expression in speaking.</li>
+                    <li>Practice answering Speaking Part 3 questions with more developed responses.</li>
+                </ul>
+            </div>
+            
+            <a href="index.html?completed=25" class="submit-btn" style="text-decoration: none; text-align: center;">Return to Dashboard</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Created for Raquel Mendes | IELTS Test Date: May 21, 2025</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Timer functionality
+        let timerInterval;
+        let timeLeft = 165 * 60; // 2 hours 45 minutes in seconds
+        
+        function updateTimerDisplay() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            
+            document.getElementById('timer').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    alert('Time is up! Your test will be submitted automatically.');
+                    submitTest();
+                }
+            }, 1000);
+        }
+        
+        // Toggle tab functionality
+        function openTab(evt, tabName) {
+            // Hide all tabcontent elements
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remove "active" class from all tab buttons
+            var tablinks = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).classList.add("active");
+            
+            if (evt) {
+                evt.currentTarget.classList.add("active");
+            } else {
+                // Find the corresponding tab button and make it active
+                let buttons = document.getElementsByClassName("tab-btn");
+                for (let i = 0; i < buttons.length; i++) {
+                    if (buttons[i].getAttribute("onclick").includes(tabName)) {
+                        buttons[i].classList.add("active");
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Toggle collapse functionality
+        function toggleCollapse(button) {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+            } else {
+                content.classList.add('active');
+            }
+        }
+        
+        // Submit test functionality
+        function submitTest() {
+            // Count completed questions
+            const filledInputs = Array.from(document.querySelectorAll('.text-input')).filter(input => input.value.trim() !== '').length;
+            const selectedRadios = document.querySelectorAll('input[type="radio"]:checked').length;
+            const filledTextareas = Array.from(document.querySelectorAll('textarea')).filter(textarea => textarea.value.trim() !== '').length;
+            
+            const totalAttempted = filledInputs + selectedRadios + filledTextareas;
+            
+            // Calculate a score based on how many questions were attempted
+            // This is a simplified scoring for the mock test
+            
+            // Generate random scores for each section (between 5.0 and 6.5 for demonstration)
+            const generateRandomScore = () => {
+                const baseScores = [5.0, 5.5, 6.0, 6.5];
+                return baseScores[Math.floor(Math.random() * baseScores.length)].toFixed(1);
+            };
+            
+            const listeningScore = generateRandomScore();
+            const readingScore = generateRandomScore();
+            const writingScore = generateRandomScore();
+            const speakingScore = generateRandomScore();
+            
+            // Calculate overall band score (average of 4 scores)
+            const overallScore = ((parseFloat(listeningScore) + parseFloat(readingScore) + 
+                                  parseFloat(writingScore) + parseFloat(speakingScore)) / 4).toFixed(1);
+            
+            // Update scores in the results modal
+            document.getElementById('band-score').textContent = overallScore;
+            document.getElementById('listening-score').textContent = listeningScore;
+            document.getElementById('reading-score').textContent = readingScore;
+            document.getElementById('writing-score').textContent = writingScore;
+            document.getElementById('speaking-score').textContent = speakingScore;
+            
+            // Add attempt information
+            document.getElementById('attempt-text').textContent = `You attempted ${totalAttempted} questions/tasks in this practice test.`;
+            
+            // Show the modal
+            document.getElementById('results-modal').style.display = 'block';
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start timer automatically
+            startTimer();
+            
+            // Submit test button
+            document.getElementById('submit-test').addEventListener('click', submitTest);
+            
+            // Modal close button
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('results-modal').style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                const modal = document.getElementById('results-modal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Mock Test - Listening Section</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 30px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #1a252f;
+        }
+        
+        .test-section {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timer-box {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .instructions {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .resource-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .resource-box h4 {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        
+        .resource-box ul li {
+            margin-bottom: 8px;
+        }
+        
+        .resource-box a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .resource-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .offline-test {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .offline-test-intro {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .options label:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .text-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 5px;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .result-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .result-score {
+            font-size: 3rem;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .band-score {
+            font-size: 4rem;
+            color: var(--accent);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .feedback-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .collapse-btn {
+            background-color: var(--light);
+            border: none;
+            color: var(--primary);
+            padding: 10px 15px;
+            text-align: left;
+            width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .collapse-btn::after {
+            content: "+";
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .collapse-btn.active::after {
+            content: "-";
+        }
+        
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
