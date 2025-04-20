@@ -708,7 +708,146 @@
             <h2>Additional Resources</h2>
             <div class="resources-grid">
                 <div class="resource-card">
-                    <div class="resource-header">Official IELTS Practice Tests</div>
+                    <div class="resource-header">Vocabulary Resources</div>
+                    <div class="resource-content">
+                        <p>Build your IELTS vocabulary with these tools:</p>
+                        <ul>
+                            <li><a href="https://quizlet.com/subject/ielts-vocabulary/" target="_blank">Quizlet IELTS Vocabulary Sets</a></li>
+                            <li><a href="https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000" target="_blank">Oxford 3000 Word List</a></li>
+                            <li><a href="https://www.examenglish.com/vocabulary/academic_word_list.html" target="_blank">Academic Word List</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-header">Grammar Practice</div>
+                    <div class="resource-content">
+                        <p>Improve your grammar skills:</p>
+                        <ul>
+                            <li><a href="https://learnenglish.britishcouncil.org/grammar" target="_blank">British Council Grammar</a></li>
+                            <li><a href="https://www.bbc.co.uk/learningenglish/english/basic-grammar" target="_blank">BBC Learning English</a></li>
+                            <li><a href="https://www.perfect-english-grammar.com/" target="_blank">Perfect English Grammar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="completion-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2 id="modal-title">Day Completed!</h2>
+            <p id="modal-message">Congratulations on completing this day of your IELTS preparation!</p>
+            <div class="result-score">
+                <span id="day-score">4.5</span>/9
+            </div>
+            <div class="feedback-section">
+                <h3>Your Feedback:</h3>
+                <p id="day-feedback">You're making good progress! Focus on improving your listening skills by practicing with more difficult audio samples. Your reading comprehension is improving, but work on your time management. Keep practicing your speaking with varied vocabulary.</p>
+            </div>
+            <button class="day-btn" style="margin-top: 20px;" id="modal-continue">Continue</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Created with ❤️ for Raquel Mendes | IELTS Test Date: May 21, 2025</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Tab functionality
+        function openWeek(evt, weekName) {
+            // Hide all tabcontent elements
+            var tabcontent = document.getElementsByClassName("tabcontent");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remove "active" class from all tablinks
+            var tablinks = document.getElementsByClassName("tablinks");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(weekName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        
+        // Function to update countdown timer
+        function updateCountdown() {
+            const testDate = new Date('May 21, 2025 09:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = testDate - now;
+            
+            if (timeLeft < 0) {
+                document.getElementById('countdown-timer').textContent = "The test has passed!";
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('countdown-timer').textContent = `${days} Days : ${hours} Hours : ${minutes} Minutes`;
+        }
+        
+        // Check URL parameters
+        function checkURLParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const completed = urlParams.get('completed');
+            
+            if (completed) {
+                // Show completion modal
+                document.getElementById('modal-title').textContent = `Day ${completed} Completed!`;
+                document.getElementById('modal-message').textContent = `Congratulations on completing Day ${completed} of your IELTS preparation!`;
+                
+                // Set a random band score between 5.0 and 6.5 for demonstration
+                const randomScore = (Math.random() * 1.5 + 5.0).toFixed(1);
+                document.getElementById('day-score').textContent = randomScore;
+                
+                // Show the modal
+                document.getElementById('completion-modal').style.display = 'block';
+            }
+        }
+        
+        // Update progress and countdown when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update the progress information - hardcoded for now without localStorage
+            document.getElementById('overall-progress').style.width = "0%";
+            document.getElementById('completed-days').textContent = "0";
+            document.getElementById('progress-percentage').textContent = "0%";
+            
+            // Update the countdown timer
+            updateCountdown();
+            setInterval(updateCountdown, 60000); // Update every minute
+            
+            // Check URL parameters
+            checkURLParams();
+            
+            // Modal close button
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('completion-modal').style.display = 'none';
+            });
+            
+            // Continue button
+            document.getElementById('modal-continue').addEventListener('click', function() {
+                document.getElementById('completion-modal').style.display = 'none';
+            });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('completion-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html><div class="resource-header">Official IELTS Practice Tests</div>
                     <div class="resource-content">
                         <p>Access official practice materials from the test creators:</p>
                         <ul>
