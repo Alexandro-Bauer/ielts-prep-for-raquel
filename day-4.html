@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4: Writing Task 2 Introduction & Speaking Part 2</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 30px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: #1a252f;
+        }
+        
+        .day-detail {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .study-hour {
+            margin-bottom: 25px;
+            border-left: 4px solid var(--secondary);
+            padding-left: 15px;
+        }
+        
+        .hour-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .hour-content {
+            padding-left: 10px;
+        }
+        
+        .hour-content h4 {
+            margin: 15px 0 10px;
+            color: var(--primary);
+        }
+        
+        .hour-content p {
+            margin-bottom: 15px;
+        }
+        
+        .hour-content ul, .hour-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .hour-content li {
+            margin-bottom: 5px;
+        }
+        
+        .resources-list {
+            margin-top: 15px;
+        }
+        
+        .resources-list li {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .resource-box h4 {
+            margin-bottom: 10px;
+        }
+        
+        .resource-box ul {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        
+        .resource-box ul li {
+            margin-bottom: 8px;
+        }
+        
+        .resource-box a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .resource-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .exercise-box {
+            background-color: var(--light);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .assessment-section {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .assessment-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .completion-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        
+        .completion-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .timer-container {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .timer-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: var(--primary);
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .notes-section {
+            margin-top: 30px;
+        }
+        
+        .notes-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .notes-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .writing-input {
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            margin-top: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+        }
+        
+        .writing-sample {
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .feedback-section {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 0 0 5px 5px;
+            margin-top: 30px;
+        }
+        
+        .collapse-btn {
+            background-color: var(--light);
+            border: none;
+            color: var(--primary);
+            padding: 10px 15px;
+            text-align: left;
+            width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .collapse-btn::after {
+            content: "+";
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .collapse-btn.active::after {
+            content: "-";
+        }
+        
+        .collapse-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .collapse-content.active {
+            max-height: 500px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        .result-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .result-score {
+            font-size: 3rem;
+            color: var(--primary);
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .essay-structure {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .essay-structure h4 {
+            margin-bottom: 10px;
+        }
+        
+        .essay-paragraph {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .topic-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .day-detail {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Day 4: Writing Task 2 Introduction & Speaking Part 2</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Dashboard</a>
+        
+        <div class="timer-container">
+            <h3>Study Timer</h3>
+            <div class="timer-display" id="timer">03:00:00</div>
+            <div class="timer-controls">
+                <button class="timer-btn" id="start-timer">Start</button>
+                <button class="timer-btn" id="pause-timer">Pause</button>
+                <button class="timer-btn" id="reset-timer">Reset</button>
+            </div>
+        </div>
+        
+        <div class="day-detail">
+            <h2>Today's Study Plan</h2>
+            <p>Welcome to Day 4 of your IELTS preparation! Today, we'll focus on two important components: Writing Task 2 essays and Speaking Part 2 (the "long turn").</p>
+            
+            <div class="study-hour">
+                <h3 class="hour-title">Hour 1: Introduction to Writing Task 2</h3>
+                <div class="hour-content">
+                    <p>Writing Task 2 is an essay question that requires you to write at least 250 words in response to a point of view, argument, or problem. This task tests your ability to present and justify an opinion, discuss a problem, or present a solution.</p>
+                    
+                    <div class="resource-box">
+                        <h4>IELTS Writing Task 2 Resources</h4>
+                        <p>Learn about IELTS Writing Task 2 structure and strategies:</p>
+                        <ul>
+                            <li><a href="https://www.ielts.org/for-test-takers/test-format/writing/task-2" target="_blank">IELTS.org - Writing Task 2 Format</a></li>
+                            <li><a href="https://ieltsliz.com/ielts-writing-task-2/" target="_blank">IELTS Liz - Writing Task 2 Guide</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=KQbPrUIBozU" target="_blank">E2 IELTS - Writing Task 2 Structure</a></li>
+                            <li><a href="https://www.ieltsadvantage.com/ielts-writing-task-2/" target="_blank">IELTS Advantage - Writing Task 2 Tips</a></li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Types of Writing Task 2 Questions:</h4>
+                    <ol>
+                        <li><strong>Opinion Essays:</strong> Do you agree or disagree? / To what extent do you agree or disagree?</li>
+                        <li><strong>Discussion Essays:</strong> Discuss both views and give your opinion</li>
+                        <li><strong>Problem-Solution Essays:</strong> What are the problems and solutions?</li>
+                        <li><strong>Advantages-Disadvantages Essays:</strong> What are the advantages and disadvantages?</li>
+                        <li><strong>Double Question Essays:</strong> Two questions that need to be answered</li>
+                    </ol>
+                    
+                    <h4>Basic Essay Structure:</h4>
+                    <div class="essay-structure">
+                        <h4>Four-Paragraph Structure:</h4>
+                        <div class="essay-paragraph">
+                            <strong>Introduction:</strong>
+                            <ul>
+                                <li>Paraphrase the question (rewrite it in your own words)</li>
+                                <li>State your position/thesis statement</li>
+                            </ul>
+                        </div>
+                        <div class="essay-paragraph">
+                            <strong>Body Paragraph 1:</strong>
+                            <ul>
+                                <li>Topic sentence (main idea)</li>
+                                <li>Explanation</li>
+                                <li>Example</li>
+                                <li>Supporting detail</li>
+                            </ul>
+                        </div>
+                        <div class="essay-paragraph">
+                            <strong>Body Paragraph 2:</strong>
+                            <ul>
+                                <li>Topic sentence (second main idea)</li>
+                                <li>Explanation</li>
+                                <li>Example</li>
+                                <li>Supporting detail</li>
+                            </ul>
+                        </div>
+                        <div class="essay-paragraph">
+                            <strong>Conclusion:</strong>
+                            <ul>
+                                <li>Summarize main points</li>
+                                <li>Restate your position</li>
+                                <li>Final thought (optional)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="exercise-box">
+                        <h4>Exercise: Identifying Essay Types</h4>
+                        <p>Identify the type of essay required for each of the following questions:</p>
+                        
+                        <ol>
+                            <li>"Some people think that children should begin learning a foreign language at primary school, while others believe that children should begin learning a foreign language at secondary school. Discuss both views and give your opinion."
+                                <ul class="options">
+                                    <li><label><input type="radio" name="et1" value="a"> Opinion Essay</label></li>
+                                    <li><label><input type="radio" name="et1" value="b"> Discussion Essay</label></li>
+                                    <li><label><input type="radio" name="et1" value="c"> Problem-Solution Essay</label></li>
+                                    <li><label><input type="radio" name="et1" value="d"> Advantages-Disadvantages Essay</label></li>
+                                </ul>
+                            </li>
+                            <li>"In many countries, the number of people who are overweight is increasing. What are the causes of this problem and what are some solutions?"
+                                <ul class="options">
+                                    <li><label><input type="radio" name="et2" value="a"> Opinion Essay</label></li>
+                                    <li><label><input type="radio" name="et2" value="b"> Discussion Essay</label></li>
+                                    <li><label><input type="radio" name="et2" value="c"> Problem-Solution Essay</label></li>
+                                    <li><label><input type="radio" name="et2" value="d"> Advantages-Disadvantages Essay</label></li>
+                                </ul>
+                            </li>
+                            <li>"To what extent do you agree or disagree that watching television is bad for children?"
+                                <ul class="options">
+                                    <li><label><input type="radio" name="et3" value="a"> Opinion Essay</label></li>
+                                    <li><label><input type="radio" name="et3" value="b"> Discussion Essay</label></li>
+                                    <li><label><input type="radio" name="et3" value="c"> Problem-Solution Essay</label></li>
+                                    <li><label><input type="radio" name="et3" value="d"> Advantages-Disadvantages Essay</label></li>
+                                </ul>
+                            </li>
+                            <li>"Some people believe that living in big cities is becoming more difficult. Others believe that the city life is becoming easier. Discuss both views and give your own opinion."
+                                <ul class="options">
+                                    <li><label><input type="radio" name="et4" value="a"> Opinion Essay</label></li>
+                                    <li><label><input type="radio" name="et4" value="b"> Discussion Essay</label></li>
+                                    <li><label><input type="radio" name="et4" value="c"> Problem-Solution Essay</label></li>
+                                    <li><label><input type="radio" name="et4" value="d"> Advantages-Disadvantages Essay</label></li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">Check Answers</button>
+                        <div class="collapse-content">
+                            <ol>
+                                <li>"Some people think that children should begin learning a foreign language at primary school..." - <strong>Discussion Essay</strong> (Discuss both views and give your opinion)</li>
+                                <li>"In many countries, the number of people who are overweight is increasing..." - <strong>Problem-Solution Essay</strong> (What are the causes and solutions?)</li>
+                                <li>"To what extent do you agree or disagree that watching television is bad for children?" - <strong>Opinion Essay</strong> (To what extent do you agree or disagree?)</li>
+                                <li>"Some people believe that living in big cities is becoming more difficult..." - <strong>Discussion Essay</strong> (Discuss both views and give your opinion)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="study-hour">
+                <h3 class="hour-title">Hour 2: Writing Task 2 - Practice and Analysis</h3>
+                <div class="hour-content">
+                    <p>Now let's look at a sample essay and analyze its structure and key elements.</p>
+                    
+                    <h4>Sample Essay Question:</h4>
+                    <div class="exercise-box">
+                        <p><strong>Some people believe that all children should learn to play a musical instrument. To what extent do you agree or disagree with this view?</strong></p>
+                    </div>
+                    
+                    <h4>Sample Essay (Opinion Type):</h4>
+                    <div class="writing-sample">
+                        <p>In recent years, there has been considerable debate about whether all children should be required to learn a musical instrument as part of their education. While some people believe this should be mandatory, others think it should remain optional. This essay will discuss why I largely agree that learning a musical instrument offers significant benefits to children's development.</p>
+                        <br>
+                        <p>Learning to play a musical instrument provides numerous cognitive benefits for children. Studies have shown that music education enhances brain development, particularly in areas related to language processing and mathematical thinking. For example, children who regularly practice instruments like the piano or violin often demonstrate improved concentration, memory, and problem-solving skills in their academic subjects. Furthermore, these cognitive advantages can translate into better overall academic performance, which can benefit children throughout their education and into adulthood.</p>
+                        <br>
+                        <p>Beyond intellectual development, learning a musical instrument also cultivates important character traits and social skills. The process of mastering an instrument requires discipline, patience, and perseverance as children must practice regularly to improve their abilities. A child learning the guitar, for instance, must dedicate time each day to practice chords and techniques, teaching them the value of consistent effort. Additionally, playing music in groups, such as school orchestras or bands, helps children develop teamwork and communication skills as they learn to coordinate their playing with others and listen attentively.</p>
+                        <br>
+                        <p>In conclusion, I strongly agree that learning a musical instrument offers valuable benefits for children's intellectual and personal development. However, while I believe music education should be widely available and encouraged in schools, forcing every child to learn an instrument might not be practical or beneficial for all, as children have different interests and talents. Nevertheless, providing opportunities for musical education should be a priority in school curricula.</p>
+                    </div>
+                    
+                    <h4>Essay Analysis:</h4>
+                    <ul>
+                        <li><strong>Introduction:</strong>
+                            <ul>
+                                <li>Paraphrases the question</li>
+                                <li>Clearly states the writer's position (largely agrees)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Body Paragraph 1:</strong>
+                            <ul>
+                                <li>Topic sentence about cognitive benefits</li>
+                                <li>Explanation with specific examples</li>
+                                <li>Supporting details about academic performance</li>
+                            </ul>
+                        </li>
+                        <li><strong>Body Paragraph 2:</strong>
+                            <ul>
+                                <li>Topic sentence about character and social skills</li>
+                                <li>Examples with specific details (guitar practice)</li>
+                                <li>Additional point about group playing</li>
+                            </ul>
+                        </li>
+                        <li><strong>Conclusion:</strong>
+                            <ul>
+                                <li>Restates position</li>
+                                <li>Adds balanced view (not forcing every child)</li>
+                                <li>Final recommendation</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <div class="exercise-box">
+                        <h4>Practice Exercise: Writing an Introduction</h4>
+                        <p>Write an introduction paragraph for the following essay question:</p>
+                        <p><strong>"Some people believe that technology has made our lives too complicated. To what extent do you agree or disagree?"</strong></p>
+                        
+                        <p>Remember to include:</p>
+                        <ul>
+                            <li>A paraphrase of the question</li>
+                            <li>Your position (agree, disagree, or partially agree/disagree)</li>
+                        </ul>
+                        
+                        <textarea class="writing-input" rows="6" placeholder="Write your introduction here..."></textarea>
+                        
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">View Sample Introduction</button>
+                        <div class="collapse-content">
+                            <div class="writing-sample">
+                                <p>There is an ongoing debate about whether modern technology has made our day-to-day lives unnecessarily complex rather than simplifying them as intended. While technology has undoubtedly transformed how we work, communicate, and spend our leisure time, I partially agree with the view that it has added complications to our lives, although its benefits often outweigh these drawbacks.</p>
+                            </div>
+                            
+                            <h5>Analysis:</h5>
+                            <ul>
+                                <li>The first sentence paraphrases the question using different vocabulary (ongoing debate, modern technology, unnecessarily complex)</li>
+                                <li>The second sentence clearly states the writer's position (partially agree) and hints at the balanced approach the essay will take</li>
+                                <li>The introduction is concise but informative, setting up the essay's direction</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4>Key Writing Tips:</h4>
+                    <ul>
+                        <li>Always plan your essay before you start writing (spend 5 minutes planning)</li>
+                        <li>Use a clear paragraph structure with topic sentences</li>
+                        <li>Develop your ideas with examples and explanations</li>
+                        <li>Use a range of vocabulary and grammatical structures</li>
+                        <li>Stay on topic and answer the specific question asked</li>
+                        <li>Aim for 250-280 words (writing too much may lead to errors)</li>
+                        <li>Leave 2-3 minutes for checking your work</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="study-hour">
+                <h3 class="hour-title">Hour 3: Speaking Part 2 - The Long Turn</h3>
+                <div class="hour-content">
+                    <p>Speaking Part 2 is often called the "long turn" because you need to speak for 1-2 minutes on a given topic. You'll receive a task card with a topic and several points to cover.</p>
+                    
+                    <div class="resource-box">
+                        <h4>IELTS Speaking Part 2 Resources</h4>
+                        <p>Learn more about the Speaking Part 2 format and strategies:</p>
+                        <ul>
+                            <li><a href="https://www.ielts.org/for-test-takers/test-format/speaking/part-2" target="_blank">IELTS.org - Speaking Part 2</a></li>
+                            <li><a href="https://ieltsliz.com/ielts-speaking-part-2/" target="_blank">IELTS Liz - Speaking Part 2 Guide</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=EVa9SANOKIM" target="_blank">E2 IELTS - Speaking Part 2 Strategy</a></li>
+                            <li><a href="https://www.fastrack-education.com/ielts-speaking-part-2-cue-card-tips/" target="_blank">Fastrack IELTS - Speaking Part 2 Tips</a></li>
+                        </ul>
+                    </div>
+                    
+                    <h4>Speaking Part 2 Format:</h4>
+                    <ol>
+                        <li>You receive a task card with a topic and points to include</li>
+                        <li>You have 1 minute to prepare (make notes)</li>
+                        <li>You speak for 1-2 minutes on the topic</li>
+                        <li>The examiner may ask one brief question when you finish</li>
+                    </ol>
+                    
+                    <div class="topic-card">
+                        <h4>Sample Task Card:</h4>
+                        <p>Describe a place you have visited that you found interesting.</p>
+                        <p>You should say:</p>
+                        <ul>
+                            <li>where the place is</li>
+                            <li>when you visited this place</li>
+                            <li>what you did there</li>
+                        </ul>
+                        <p>and explain why you found this place interesting.</p>
+                    </div>
+                    
+                    <h4>Preparation Strategy:</h4>
+                    <ul>
+                        <li><strong>Use the 1-minute preparation time effectively:</strong>
+                            <ul>
+                                <li>Quickly choose a place (real or imagined)</li>
+                                <li>Note down key points for each bullet point</li>
+                                <li>Think of specific details and examples</li>
+                            </ul>
+                        </li>
+                        <li><strong>Structure your answer:</strong>
+                            <ul>
+                                <li>Introduction: Briefly introduce the place</li>
+                                <li>Main points: Cover each bullet point with details</li>
+                                <li>Conclusion: Summarize why it was interesting</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <div class="exercise-box">
+                        <h4>Practice Exercise: Note-Taking</h4>
+                        <p>You have 1 minute to make notes for the task card above. Write down key points that you would include in your answer:</p>
+                        
+                        <textarea class="writing-input" rows="6" placeholder="Write your notes here..."></textarea>
+                        
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">View Sample Notes</button>
+                        <div class="collapse-content">
+                            <div class="writing-sample">
+                                <p><strong>Place:</strong> Auckland Museum, New Zealand</p>
+                                <p><strong>Where:</strong> Auckland Domain park, central Auckland</p>
+                                <p><strong>When:</strong> Last summer, June 2024</p>
+                                <p><strong>What I did:</strong> 
+                                - Saw Māori cultural exhibits
+                                - Viewed volcanic display
+                                - Attended cultural performance
+                                - Explored war memorial sections</p>
+                                <p><strong>Why interesting:</strong>
+                                - Learned about NZ history
+                                - Amazing Māori artifacts
+                                - Interactive displays
+                                - Beautiful architecture</p>
+                            </div>
+                            
+                            <h5>Note:</h5>
+                            <p>These brief notes contain enough information to speak for 1-2 minutes. When speaking, you would expand on each point with details and personal observations.</p>
+                        </div>
+                    </div>
+                    
+                    <h4>Sample Response:</h4>
+                    <div class="writing-sample">
+                        <p>I'd like to talk about the Auckland Museum, which I visited last summer when I was exploring New Zealand. The museum is located in a beautiful neoclassical building in the Auckland Domain, which is a large park in the center of Auckland city.</p>
+                        <p>I visited the museum in June last year during my holiday to New Zealand. It was actually a rainy day, so it was perfect timing to explore an indoor attraction. I spent nearly the whole day there because there was so much to see.</p>
+                        <p>While I was there, I explored several fascinating exhibitions. The Māori cultural galleries were particularly impressive, with elaborate carved meeting houses and waka (canoes) on display. I also spent time in the volcanic section, which was really relevant since Auckland is built on a field of dormant volcanoes. One of the highlights was attending a Māori cultural performance, where I saw traditional songs and dances, including the famous haka. I also visited the war memorial sections which commemorate New Zealand's involvement in various conflicts.</p>
+                        <p>I found this place incredibly interesting for several reasons. Firstly, it gave me a deep insight into New Zealand's history and culture, which I knew very little about before visiting. The Māori artifacts were stunning and helped me understand the indigenous culture. I also appreciated the interactive displays that made learning more engaging - for example, there was a simulation of a volcanic eruption that was quite dramatic. Finally, the building itself is architecturally beautiful, and its position on a hill offers wonderful views of Auckland. Overall, the museum really enhanced my understanding of New Zealand and made my trip more meaningful.</p>
+                    </div>
+                    
+                    <h4>Speaking Tips:</h4>
+                    <ul>
+                        <li>Speak for the full time - don't stop too early</li>
+                        <li>Include specific details and personal experiences</li>
+                        <li>Use a range of vocabulary and grammatical structures</li>
+                        <li>Use linking words to connect your ideas (firstly, moreover, in addition)</li>
+                        <li>Practice proper pronunciation and intonation</li>
+                        <li>If you can't think of a real example, it's okay to invent one</li>
+                    </ul>
+                    
+                    <div class="exercise-box">
+                        <h4>Final Practice: Speaking Part 2</h4>
+                        <p>Practice with this task card. Use a timer for 1 minute to prepare notes, then record yourself speaking for 1-2 minutes (use your phone or computer):</p>
+                        
+                        <div class="topic-card">
+                            <h4>Task Card:</h4>
+                            <p>Describe a skill you would like to learn.</p>
+                            <p>You should say:</p>
+                            <ul>
+                                <li>what the skill is</li>
+                                <li>why you want to learn it</li>
+                                <li>how you would learn it</li>
+                            </ul>
+                            <p>and explain how this skill would be useful in your life.</p>
+                        </div>
+                        
+                        <p>After recording, listen to yourself and evaluate your response. Did you cover all the points? Did you speak for the full time? How was your fluency and vocabulary?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="assessment-section">
+                <h3 class="assessment-title">Day 4 Progress Assessment</h3>
+                <p>Complete this mini-test to evaluate your understanding of today's material.</p>
+                
+                <h4>Part 1: Writing Task 2 Knowledge</h4>
+                <ol>
+                    <li>What is the minimum word count for Writing Task 2?
+                        <ul class="options">
+                            <li><label><input type="radio" name="wk1" value="a"> 150 words</label></li>
+                            <li><label><input type="radio" name="wk1" value="b"> 200 words</label></li>
+                            <li><label><input type="radio" name="wk1" value="c"> 250 words</label></li>
+                            <li><label><input type="radio" name="wk1" value="d"> 300 words</label></li>
+                        </ul>
+                    </li>
+                    <li>Which is NOT typically a part of the introduction paragraph?
+                        <ul class="options">
+                            <li><label><input type="radio" name="wk2" value="a"> Paraphrasing the question</label></li>
+                            <li><label><input type="radio" name="wk2" value="b"> Stating your position</label></li>
+                            <li><label><input type="radio" name="wk2" value="c"> Providing detailed examples</label></li>
+                            <li><label><input type="radio" name="wk2" value="d"> Outlining the structure (optional)</label></li>
+                        </ul>
+                    </li>
+                    <li>"Many people prefer to work for themselves or from home. Others prefer to work for an employer. Would you rather be self-employed, work from home or work in an office? Use reasons and specific examples to support your answer." This question is:
+                        <ul class="options">
+                            <li><label><input type="radio" name="wk3" value="a"> An opinion essay</label></li>
+                            <li><label><input type="radio" name="wk3" value="b"> A discussion essay</label></li>
+                            <li><label><input type="radio" name="wk3" value="c"> A problem-solution essay</label></li>
+                            <li><label><input type="radio" name="wk3" value="d"> An advantages-disadvantages essay</label></li>
+                        </ul>
+                    </li>
+                    <li>Which of the following is a good practice for Writing Task 2?
+                        <ul class="options">
+                            <li><label><input type="radio" name="wk4" value="a"> Writing as many words as possible to impress the examiner</label></li>
+                            <li><label><input type="radio" name="wk4" value="b"> Including many quotations to support your points</label></li>
+                            <li><label><input type="radio" name="wk4" value="c"> Planning your essay before you start writing</label></li>
+                            <li><label><input type="radio" name="wk4" value="d"> Using complex vocabulary even if you're not sure of the meaning</label></li>
+                        </ul>
+                    </li>
+                    <li>What should a body paragraph in an IELTS essay typically include?
+                        <ul class="options">
+                            <li><label><input type="radio" name="wk5" value="a"> Only your opinion</label></li>
+                            <li><label><input type="radio" name="wk5" value="b"> A topic sentence, explanation, and examples</label></li>
+                            <li><label><input type="radio" name="wk5" value="c"> Many short, disconnected points</label></li>
+                            <li><label><input type="radio" name="wk5" value="d"> Statistics and research data only</label></li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h4>Part 2: Speaking Part 2 Knowledge</h4>
+                <ol start="6">
+                    <li>How long do you have to prepare for your Speaking Part 2 topic?
+                        <ul class="options">
+                            <li><label><input type="radio" name="sk1" value="a"> 30 seconds</label></li>
+                            <li><label><input type="radio" name="sk1" value="b"> 1 minute</label></li>
+                            <li><label><input type="radio" name="sk1" value="c"> 2 minutes</label></li>
+                            <li><label><input type="radio" name="sk1" value="d"> 5 minutes</label></li>
+                        </ul>
+                    </li>
+                    <li>How long should you speak in Speaking Part 2?
+                        <ul class="options">
+                            <li><label><input type="radio" name="sk2" value="a"> 30 seconds to 1 minute</label></li>
+                            <li><label><input type="radio" name="sk2" value="b"> 1-2 minutes</label></li>
+                            <li><label><input type="radio" name="sk2" value="c"> 2-3 minutes</label></li>
+                            <li><label><input type="radio" name="sk2" value="d"> 3-4 minutes</label></li>
+                        </ul>
+                    </li>
+                    <li>What should you do during the 1-minute preparation time?
+                        <ul class="options">
+                            <li><label><input type="radio" name="sk3" value="a"> Write out your full answer</label></li>
+                            <li><label><input type="radio" name="sk3" value="b"> Make brief notes for each bullet point</label></li>
+                            <li><label><input type="radio" name="sk3" value="c"> Do nothing and think silently</label></li>
+                            <li><label><input type="radio" name="sk3" value="d"> Ask the examiner for help</label></li>
+                        </ul>
+                    </li>
+                    <li>Which is NOT a good strategy for Speaking Part 2?
+                        <ul class="options">
+                            <li><label><input type="radio" name="sk4" value="a"> Structuring your answer with an introduction and conclusion</label></li>
+                            <li><label><input type="radio" name="sk4" value="b"> Including specific details and examples</label></li>
+                            <li><label><input type="radio" name="sk4" value="c"> Stopping as soon as you've mentioned all points briefly</label></li>
+                            <li><label><input type="radio" name="sk4" value="d"> Using linking words to connect your ideas</label></li>
+                        </ul>
+                    </li>
+                    <li>If you can't think of a real example for your Speaking Part 2 topic, what should you do?
+                        <ul class="options">
+                            <li><label><input type="radio" name="sk5" value="a"> Tell the examiner you can't answer the question</label></li>
+                            <li><label><input type="radio" name="sk5" value="b"> Ask for a different topic</label></li>
+                            <li><label><input type="radio" name="sk5" value="c"> Use your imagination and invent an example</label></li>
+                            <li><label><input type="radio" name="sk5" value="d"> Speak about a different topic instead</label></li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <button class="collapse-btn" onclick="toggleCollapse(this)">View Answer Key</button>
+                <div class="collapse-content">
+                    <h4>Part 1: Writing Task 2 Knowledge</h4>
+                    <ol>
+                        <li><strong>C) 250 words</strong></li>
+                        <li><strong>C) Providing detailed examples</strong> (these belong in body paragraphs)</li>
+                        <li><strong>A) An opinion essay</strong> (asks for your preference with reasons)</li>
+                        <li><strong>C) Planning your essay before you start writing</strong></li>
+                        <li><strong>B) A topic sentence, explanation, and examples</strong></li>
+                    </ol>
+                    
+                    <h4>Part 2: Speaking Part 2 Knowledge</h4>
+                    <ol start="6">
+                        <li><strong>B) 1 minute</strong></li>
+                        <li><strong>B) 1-2 minutes</strong></li>
+                        <li><strong>B) Make brief notes for each bullet point</strong></li>
+                        <li><strong>C) Stopping as soon as you've mentioned all points briefly</strong> (you should speak for the full time)</li>
+                        <li><strong>C) Use your imagination and invent an example</strong></li>
+                    </ol>
+                </div>
+                
+                <h4>Writing Task 2 Practice:</h4>
+                <p>Write an introduction paragraph (40-60 words) for the following essay question:</p>
+                <div class="exercise-box">
+                    <p><strong>"Many people believe that living in a city offers more advantages than living in the countryside. To what extent do you agree or disagree?"</strong></p>
+                    <textarea class="writing-input" rows="5" placeholder="Write your introduction here..." id="assessment-writing"></textarea>
+                </div>
+                
+                <div class="feedback-section">
+                    <h4>Self-Reflection:</h4>
+                    <p>What aspect of today's learning did you find most challenging?</p>
+                    <textarea rows="3" style="width: 100%; margin-top: 10px;"></textarea>
+                    
+                    <p style="margin-top: 15px;">What strategies will you use to improve in this area?</p>
+                    <textarea rows="3" style="width: 100%; margin-top: 10px;"></textarea>
+                </div>
+                
+                <button class="completion-btn" id="submit-assessment">Submit Assessment & Complete Day 4</button>
+            </div>
+            
+            <div class="notes-section">
+                <h3 class="notes-title">Your Study Notes</h3>
+                <p>Use this space to take notes during your study session:</p>
+                <textarea class="notes-input" placeholder="Type your notes here..." id="study-notes"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div id="result-modal" class="result-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h2>Day 4 Assessment Results</h2>
+            <div class="result-score">
+                <span id="score-value">0</span>/10 correct
+            </div>
+            <div id="band-estimate"></div>
+            <div class="feedback-section">
+                <h3>Feedback:</h3>
+                <div id="feedback-text"></div>
+                <h4>Areas to Improve:</h4>
+                <ul id="improvement-areas"></ul>
+                <h4>Recommendations for Day 5:</h4>
+                <ul id="recommendations"></ul>
+            </div>
+            <a href="index.html?completed=4" class="completion-btn" id="continue-btn">Continue to Dashboard</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Created for Raquel Mendes | IELTS Test Date: May 21, 2025</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Timer functionality
+        let timerInterval;
+        let timeLeft = 3 * 60 * 60; // 3 hours in seconds
+        
+        function updateTimerDisplay() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            
+            document.getElementById('timer').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(timerInterval);
+                    alert('Study time is up! Please complete your assessment.');
+                }
+            }, 1000);
+        }
+        
+        function pauseTimer() {
+            clearInterval(timerInterval);
+        }
+        
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timeLeft = 3 * 60 * 60;
+            updateTimerDisplay();
+        }
+        
+        // Toggle collapse functionality
+        function toggleCollapse(button) {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+            } else {
+                content.classList.add('active');
+            }
+        }
+        
+        // Assessment submission
+        function submitAssessment() {
+            // Count multiple choice questions answered
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            
+            // Check if introduction was written
+            const introductionWritten = document.getElementById('assessment-writing').value.trim().length > 0;
+            
+            // Basic score calculation
+            let score = 0;
+            if (answeredQuestions >= 8) score += 8; // Up to 8 points for multiple choice
+            else score += answeredQuestions;
+            
+            if (introductionWritten) score += 2; // 2 points for attempting the introduction
+            
+            // Display the score
+            document.getElementById('score-value').textContent = score;
+            
+            // Estimate band score based on score
+            let bandEstimate;
+            if (score >= 9) bandEstimate = "6.5-7.0";
+            else if (score >= 7) bandEstimate = "6.0-6.5";
+            else if (score >= 5) bandEstimate = "5.5-6.0";
+            else bandEstimate = "5.0-5.5";
+            
+            document.getElementById('band-estimate').innerHTML = `<p>Estimated Band Score: <strong>${bandEstimate}</strong></p>`;
+            
+            // Generate feedback based on score
+            let feedbackText;
+            const improvementAreas = [];
+            const recommendations = [];
+            
+            if (score >= 9) {
+                feedbackText = "Excellent work! You've demonstrated a strong understanding of Writing Task 2 structure and Speaking Part 2 strategies.";
+                
+                improvementAreas.push("Continue practicing essay writing with different types of questions.");
+                improvementAreas.push("Build up your vocabulary for common IELTS topics.");
+                improvementAreas.push("Work on developing better examples in your Writing Task 2 essays.");
+                
+                recommendations.push("Practice writing a complete essay under timed conditions.");
+                recommendations.push("Record more Speaking Part 2 responses and listen to your recordings.");
+                recommendations.push("Focus on using more advanced vocabulary and grammatical structures.");
+            } else if (score >= 7) {
+                feedbackText = "Good job! You have a solid understanding of the basic requirements for Writing Task 2 and Speaking Part 2.";
+                
+                improvementAreas.push("Focus on understanding different essay types and their structures.");
+                improvementAreas.push("Practice writing clearer topic sentences for your paragraphs.");
+                improvementAreas.push("Work on speaking for the full 2 minutes in Speaking Part 2.");
+                
+                recommendations.push("Practice identifying different essay types with sample questions.");
+                recommendations.push("Work on creating better essay plans before writing.");
+                recommendations.push("Practice Speaking Part 2 with a timer to develop better time management.");
+            } else {
+                feedbackText = "You're making progress! With more practice on the strategies we covered today, you'll continue to improve.";
+                
+                improvementAreas.push("Review the basic essay structure for Writing Task 2.");
+                improvementAreas.push("Practice writing clearer introductions for different essay types.");
+                improvementAreas.push("Work on note-taking for Speaking Part 2 preparation.");
+                
+                recommendations.push("Focus on writing basic 4-paragraph essays with clear structure.");
+                recommendations.push("Practice paraphrasing the question in your own words.");
+                recommendations.push("Use a timer for Speaking Part 2 preparation and delivery.");
+            }
+            
+            document.getElementById('feedback-text').textContent = feedbackText;
+            
+            const improvementList = document.getElementById('improvement-areas');
+            improvementList.innerHTML = '';
+            improvementAreas.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                improvementList.appendChild(li);
+            });
+            
+            const recommendationsList = document.getElementById('recommendations');
+            recommendationsList.innerHTML = '';
+            recommendations.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                recommendationsList.appendChild(li);
+            });
+            
+            // Show the modal
+            document.getElementById('result-modal').style.display = 'block';
+            
+            // Mark day as completed
+            localStorage.setItem('day4Completed', 'true');
+        }
+        
+        // Save notes to local storage
+        function saveNotes() {
+            const notesInput = document.getElementById('study-notes');
+            localStorage.setItem('day4Notes', notesInput.value);
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Timer controls
+            document.getElementById('start-timer').addEventListener('click', startTimer);
+            document.getElementById('pause-timer').addEventListener('click', pauseTimer);
+            document.getElementById('reset-timer').addEventListener('click', resetTimer);
+            
+            // Assessment submission
+            document.getElementById('submit-assessment').addEventListener('click', submitAssessment);
+            
+            // Modal close button
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('result-modal').style.display = 'none';
+                window.location.href = 'index.html?completed=4'; // Redirect with completed parameter
+            });
+            
+            // Continue button
+            document.getElementById('continue-btn').addEventListener('click', function() {
+                window.location.href = 'index.html?completed=4'; // Redirect with completed parameter
+            });
+            
+            // Load saved notes if any
+            const notesInput = document.getElementById('study-notes');
+            notesInput.value = localStorage.getItem('day4Notes') || '';
+            
+            // Save notes on input
+            notesInput.addEventListener('input', saveNotes);
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('result-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
